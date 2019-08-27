@@ -1,1 +1,6 @@
-<p>project-review works!</p>
+<div *ngIf="info" class="info pt-3">
+    <p>Запросы на включение изменений: {{info.pulls.length}}</p>
+    <p>Ответвления: {{info.forks.length}}</p>
+    <p>Внесение изменений: {{info.commits.length}}</p>
+    <p>Разрабочики: {{info.contributors.length}}</p>
+</div>

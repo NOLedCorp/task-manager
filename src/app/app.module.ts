@@ -30,6 +30,7 @@ import { UserGuard } from './guards/user.guard';
 import { ApiInterceptor } from './api.interceptor';
 import { UserService } from './services/user.service';
 import { ProjectGuard } from './guards/project.guard';
+import { GitHubService } from './services/github.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ProjectGuard } from './guards/project.guard';
       useClass: ApiInterceptor,
       multi: true
     },
-    HttpClient
+    HttpClient,
+    GitHubService
   ],
   bootstrap: [AppComponent]
 })
