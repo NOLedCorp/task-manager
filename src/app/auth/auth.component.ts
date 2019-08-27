@@ -16,11 +16,6 @@ export class AuthComponent implements OnInit {
   response_type="code";
 
   constructor(route: ActivatedRoute, router:Router, us:UserService) {
-    route.params.subscribe(
-      x => {
-        console.log(x)
-      }
-    )
     route.queryParams.subscribe(x => {
       if(x.token){
         sessionStorage.setItem('userToken', x.token);
@@ -28,13 +23,23 @@ export class AuthComponent implements OnInit {
         .pipe(
           tap(info => {
             sessionStorage.setItem('userInfo', info);
-            router.navigate(['user',info.Id]);
+            router.navigate(['user', info.Id]);
           })
         )
         .subscribe()
         
       }
     })
+    if(sessionStorage.getItem('userToken')){
+      us.getUserInfo()
+      .pipe(
+        tap(info => {
+          sessionStorage.setItem('userInfo', info);
+          router.navigate(['user', info.Id]);
+        })
+      )
+      .subscribe()
+    }
    }
 
   ngOnInit() {

@@ -6,7 +6,7 @@ import { tap } from 'rxjs/internal/operators'
 
 @Injectable({providedIn: 'root'})
 export class UserService{
-    baseUrl:string='http://client.nomokoiw.beget.tech/task_manager/user.controller.php?';
+    baseUrl:string='http://client.nomokoiw.beget.tech/task_manager/user/user.controller.php?';
 
     constructor(private router:Router, private http: HttpClient){  
     }
