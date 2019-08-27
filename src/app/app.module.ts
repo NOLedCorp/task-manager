@@ -1,5 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//Формы
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+
+//Модальные окна
+import { ModalModule, BsModalService } from 'ngx-bootstrap';
+// import { ModalComponent } from './modal/modal.component';
+// import { ModalService } from './services/modal.service';
+
+//HTTP запросы
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +27,8 @@ import { TeamComponent } from './team/team.component';
 import { RequirementComponent } from './requirement/requirement.component';
 import { TaskComponent } from './task/task.component';
 import { UserGuard } from './user.guard';
+import { ApiInterceptor } from './api.interceptor';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +48,19 @@ import { UserGuard } from './user.guard';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [UserGuard],
+  providers: [
+    UserGuard,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
+    },
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

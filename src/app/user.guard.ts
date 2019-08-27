@@ -5,7 +5,7 @@ export class UserGuard implements CanActivate{
  
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean{
          console.log(route.params['userId']);
-         if(sessionStorage.getItem('taskManagerUser')){
+         if(sessionStorage.getItem('userToken')){
              return true;
          }else{
              return false;
