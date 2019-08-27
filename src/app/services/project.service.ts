@@ -15,7 +15,7 @@ export class ProjectService{
     }
 
     public checkProjectUser(projectId){
-        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-user&ProjectId='+projectId);
+        return this.http.get<boolean>(this.baseUrl + 'Key=check-project-user&ProjectId='+projectId);
     }
 
     public getProject(projectId){
