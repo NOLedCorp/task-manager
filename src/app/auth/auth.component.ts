@@ -22,7 +22,7 @@ export class AuthComponent implements OnInit {
         us.getUserInfo()
         .pipe(
           tap(info => {
-            sessionStorage.setItem('userInfo', info);
+            sessionStorage.setItem('userInfo', JSON.stringify(info));
             router.navigate(['user', info.Id]);
           })
         )
@@ -34,7 +34,7 @@ export class AuthComponent implements OnInit {
       us.getUserInfo()
       .pipe(
         tap(info => {
-          sessionStorage.setItem('userInfo', info);
+          sessionStorage.setItem('userInfo', JSON.stringify(info));
           router.navigate(['user', info.Id]);
         })
       )

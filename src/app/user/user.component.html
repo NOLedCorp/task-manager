@@ -1,2 +1,19 @@
-<p>user works!</p>
-<router-outlet></router-outlet>
+<div *ngIf="user">
+    <div class="header">
+        <div class="menu">
+            <div [routerLink]="['projects']"
+            routerLinkActive="active" class="item">Проекты</div>
+            <div [routerLink]="['work']"
+            routerLinkActive="active" class="item">Работа</div>
+            <div [routerLink]="['notificaions']"
+            routerLinkActive="active" class="item">Уведомления</div>
+        </div>
+        <div class="user">
+            <img src="{{user.Photo}}">
+            <p>{{user.Name}}</p>
+        </div>
+    </div>
+    
+    <router-outlet></router-outlet>
+</div>
+

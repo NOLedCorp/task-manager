@@ -11,7 +11,8 @@ import { ProjectRequirementsComponent } from './project-requirements/project-req
 import { TeamComponent } from './team/team.component';
 import { RequirementComponent } from './requirement/requirement.component';
 import { TaskComponent } from './task/task.component';
-import { UserGuard } from './user.guard';
+import { UserGuard } from './guards/user.guard';
+import { ProjectGuard } from './guards/project.guard';
 
 const projectRouts: Routes = [
   {path: '', redirectTo: 'review', pathMatch: 'full'},
@@ -27,7 +28,7 @@ const projectRouts: Routes = [
 const userRouts: Routes = [
   {path: '', redirectTo: 'projects', pathMatch: 'full'},
   {path: 'projects', component: ProjectsComponent},
-  {path: 'project/:projectId', component: ProjectComponent, children: projectRouts},
+  {path: 'project/:projectId', component: ProjectComponent, children: projectRouts, canActivate: [ProjectGuard]},
   {path: 'work', component: WorkComponent},
   {path: 'notificaions', component: NotificationsComponent}
 ];

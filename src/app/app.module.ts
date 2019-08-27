@@ -26,9 +26,10 @@ import { ProjectRequirementsComponent } from './project-requirements/project-req
 import { TeamComponent } from './team/team.component';
 import { RequirementComponent } from './requirement/requirement.component';
 import { TaskComponent } from './task/task.component';
-import { UserGuard } from './user.guard';
+import { UserGuard } from './guards/user.guard';
 import { ApiInterceptor } from './api.interceptor';
 import { UserService } from './services/user.service';
+import { ProjectGuard } from './guards/project.guard';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { UserService } from './services/user.service';
   ],
   providers: [
     UserGuard,
+    ProjectGuard,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

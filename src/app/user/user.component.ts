@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.less']
 })
 export class UserComponent implements OnInit {
-
+  user = null;
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem('userInfo'));
   }
 
 }
