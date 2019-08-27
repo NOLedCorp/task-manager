@@ -53,8 +53,8 @@ export enum Roles{
 
 
 export enum TaskTypes{
-    Task = 1,
-    Bug = 2
+    Task = 'task',
+    Bug = 'bug'
 }
 
 export enum StatusTypes{

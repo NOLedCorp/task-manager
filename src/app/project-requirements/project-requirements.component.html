@@ -1,1 +1,1 @@
-<p>project-requirements works!</p>
+<h4 *ngFor="let req of reqs" [routerLink]="['../requirement', req.Id]">{{req.Name}}</h4>

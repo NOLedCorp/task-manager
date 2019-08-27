@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/internal/operators'
 import { User } from '../models/user.model';
-import { Project } from '../models/project.model';
-import { of } from 'rxjs';
+import { Project, Requirement, Task, ProjectUser } from '../models/project.model';
+import { of, Observable } from 'rxjs';
 // import { OnInit } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
@@ -14,24 +14,24 @@ export class ProjectService{
     constructor(private router:Router, private http: HttpClient){  
     }
 
-    public checkProjectUser(projectId){
+    public checkProjectUser(projectId): Observable<boolean>{
         return this.http.get<boolean>(this.baseUrl + 'Key=check-project-user&ProjectId='+projectId);
     }
 
-    public getProject(projectId){
-        return this.http.get<boolean>(this.baseUrl + 'Key=get-project&ProjectId='+projectId);
+    public getProject(projectId):Observable<Project>{
+        return this.http.get<Project>(this.baseUrl + 'Key=get-project&ProjectId='+projectId);
     }
 
-    public getProjectTasks(projectId){
-        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-tasks&ProjectId='+projectId);
+    public getProjectTasks(projectId): Observable<Task[]> {
+        return this.http.get<Task[]>(this.baseUrl + 'Key=get-project-tasks&ProjectId='+projectId);
     }
 
-    public getProjectReqs(projectId){
-        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-reqs&ProjectId='+projectId);
+    public getProjectReqs(projectId): Observable<Requirement[]> {
+        return this.http.get<Requirement[]>(this.baseUrl + 'Key=get-project-reqs&ProjectId='+projectId);
     }
 
-    public getProjectTeam(projectId){
-        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-team&ProjectId='+projectId);
+    public getProjectTeam(projectId): Observable<ProjectUser[]> {
+        return this.http.get<ProjectUser[]>(this.baseUrl + 'Key=get-project-team&ProjectId='+projectId);
     }
 
 }
