@@ -3,19 +3,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid lightgray;
     .menu{
-        display: flex;
         .item{
-            margin-right: 10px;
-            color: @blue;
-            cursor: pointer;
-            
-            &.active, &:hover{
-                text-decoration: underline;
-            }
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
         }
     }
-
     .user{
         display: flex;
         align-items: center;
@@ -28,6 +23,19 @@
         p{
             margin: 0;
             font-size: 18px;
+        }
+    }
+}
+
+.menu{
+    display: flex;
+    .item{
+        margin-right: 10px;
+        color: @blue;
+        cursor: pointer;
+        
+        &.active, &:hover{
+            text-decoration: underline;
         }
     }
 }

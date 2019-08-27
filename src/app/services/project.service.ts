@@ -15,14 +15,23 @@ export class ProjectService{
     }
 
     public checkProjectUser(projectId){
-        return this.http.get<boolean>(this.baseUrl + 'Key=check-project-user&ProjectId='+projectId).pipe(
-            tap(
-                res => {
-                    console.log(res);
-                    return of(res)
-                }
-            )
-        );
+        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-user&ProjectId='+projectId);
+    }
+
+    public getProject(projectId){
+        return this.http.get<boolean>(this.baseUrl + 'Key=get-project&ProjectId='+projectId);
+    }
+
+    public getProjectTasks(projectId){
+        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-tasks&ProjectId='+projectId);
+    }
+
+    public getProjectReqs(projectId){
+        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-reqs&ProjectId='+projectId);
+    }
+
+    public getProjectTeam(projectId){
+        return this.http.get<boolean>(this.baseUrl + 'Key=get-project-team&ProjectId='+projectId);
     }
 
 }

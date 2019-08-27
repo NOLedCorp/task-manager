@@ -1,5 +1,5 @@
 <div *ngIf="user">
-    <div class="header">
+    <div class="header px-3 py-1 mb-2">
         <div class="menu">
             <div [routerLink]="['projects']"
             routerLinkActive="active" class="item">Проекты</div>
@@ -13,7 +13,9 @@
             <p>{{user.Name}}</p>
         </div>
     </div>
+    <div class="px-3">
+            <router-outlet></router-outlet>
+    </div>
     
-    <router-outlet></router-outlet>
 </div>
 

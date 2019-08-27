@@ -1,2 +1,11 @@
-<p>project works!</p>
+<div class="menu">
+    <div [routerLink]="['review']"
+    routerLinkActive="active" class="item">Обзор</div>
+    <div [routerLink]="['mywork']"
+    routerLinkActive="active" class="item">Мои задачи</div>
+    <div [routerLink]="['team']"
+    routerLinkActive="active" class="item">Команда</div>
+    <div [routerLink]="['requirements']"
+    routerLinkActive="active" class="item">Требования</div>
+</div>
 <router-outlet></router-outlet>
