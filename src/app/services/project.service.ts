@@ -37,4 +37,8 @@ export class ProjectService{
         return this.http.get<ProjectUser[]>(this.baseUrl + 'Key=get-project-team&ProjectId='+projectId);
     }
 
+    public getTasks(): Observable<Project[]> {
+        return this.http.get<Project[]>(this.baseUrl + 'Key=get-tasks');
+    }
+
 }

@@ -1,2 +1,20 @@
 
-<work-item *ngFor="let task of tasks" [item]="task" [routerLink]="[task.Type==taskTypes.Task?'../task':'../bug', task.Id]"></work-item>
+<div *ngIf="tasks.length" class="tasks">
+    <work-item *ngFor="let task of tasks" [item]="task" [routerLink]="['../'+task.Type, task.Id]"></work-item>
+</div>
+<div *ngIf="projects.length" class="projects">
+    <div class="project" *ngFor="let p of projects">
+        <div class="header" (click)="show(p.Id, $event)">
+            <div>
+                <h4 [routerLink]="['../project',p.Id]" class="mb-0">{{p.Name}}</h4>
+                <small><a  href="{{p.GitHubLink}}" target="_blank">{{p.GitHubLink}}</a></small>
+            </div>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+        <ng-container *ngIf="shows[p.Id]">
+            <work-item *ngFor="let task of p.Tasks" [item]="task" [routerLink]="['../project',p.Id,task.Type, task.Id]"></work-item>
+        </ng-container>
+        
+    </div>
+    
+</div>

@@ -179,8 +179,13 @@ class DataBase {
         if(!$this->checkProjectUser($user_id, $project_id)){
             return false;
         }
-        $s = $this->db->prepare("SELECT * FROM tasks WHERE ProjectId=?");
-        $s->execute(array($project_id));
+        
+        return $this->getMyProjectTasks($user_id, $project_id);
+        
+    }
+    private function getMyProjectTasks($user_id, $project_id){
+        $s = $this->db->prepare("SELECT t.Id, t.Name, t.CreateDate, t.Status, t.Priority, u.Name as UserName, pu.Roles, t.Type FROM tasks t JOIN users u ON t.UserId=u.Id JOIN projectusers pu ON t.UserId=pu.UserId AND t.ProjectId=pu.ProjectId  WHERE t.ProjectId=? AND t.UserId=?");
+        $s->execute(array($project_id, $user_id));
         $s->setFetchMode(PDO::FETCH_CLASS, 'Task');
         
         return $s->fetchAll();
@@ -190,34 +195,37 @@ class DataBase {
         if(!$this->checkProjectUser($user_id, $project_id)){
             return false;
         }
-        $s = $this->db->prepare("SELECT * FROM requirements WHERE ProjectId=?");
+        $s = $this->db->prepare("SELECT t.Id, t.Name, t.CreateDate, t.Status, t.Priority, u.Name as UserName, pu.Roles, t.Type FROM tasks t JOIN users u ON t.UserId=u.Id JOIN projectusers pu ON t.UserId=pu.UserId AND t.ProjectId=pu.ProjectId  WHERE t.ProjectId=? AND t.Type='requirement'");
         $s->execute(array($project_id));
-        $s->setFetchMode(PDO::FETCH_CLASS, 'Requirement');
+        $s->setFetchMode(PDO::FETCH_CLASS, 'Task');
         
         return $s->fetchAll();
+    }
+    
+    public function getTasks($user_id){
+        $s = $this->db->prepare("SELECT p.Id, p.Name, p.GitHubLink FROM projectusers pu JOIN projects p ON pu.ProjectId=p.Id WHERE pu.UserId=?");
+        $s->execute(array($user_id));
+        $s->setFetchMode(PDO::FETCH_CLASS, 'Project');
+        $projects = [];
+       
+        while($p = $s->fetch()){
+            $p->Tasks=$this->getMyProjectTasks($user_id, $p->Id);
+            $projects[] = $p;
+        }
+        
+        return $projects;
     }
     
     public function getProjectTeam($user_id, $project_id){
         if(!$this->checkProjectUser($user_id, $project_id)){
             return false;
         }
-        $s = $this->db->prepare("SELECT pu.Id as ProjectUserId, u.Id, u.Name, u.Photo FROM projectusers pu JOIN users u ON pu.UserId=u.Id WHERE ProjectId=?");
+        $s = $this->db->prepare("SELECT pu.Id as ProjectUserId, u.Id, u.Name, u.Photo, pu.Roles FROM projectusers pu JOIN users u ON pu.UserId=u.Id WHERE ProjectId=?");
         $s->execute(array($project_id));
         $s->setFetchMode(PDO::FETCH_CLASS, 'User');
-        $users = [];
-        while($user = $s->fetch()){
-            $user['Roles']=$this->getUserRoles($user['ProjectUserId']);
-        }
-        return $users;
-    }
-    
-    private function getUserRoles($user_id){
-        $s = $this->db->prepare("SELECT * FROM roles WHERE ProjectUserId=?");
-        $s->execute(array($user_id));
-        $s->setFetchMode(PDO::FETCH_CLASS, 'Role');
-        
         return $s->fetchAll();
     }
+    
 
     // ------------------------       Запросы на добавление данных в базу      ------------------------
     

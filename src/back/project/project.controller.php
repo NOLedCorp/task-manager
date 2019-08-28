@@ -31,7 +31,11 @@ if(isset($_GET['Token']))
                 break;
                 
             case 'get-project-reqs':
-                echo json_encode($ctxt->getProjectReq($jwt->decodeJWT($_GET['Token'])->Id, $_GET['ProjectId']));
+                echo json_encode($ctxt->getProjectReqs($jwt->decodeJWT($_GET['Token'])->Id, $_GET['ProjectId']));
+                break;
+                
+            case 'get-tasks':
+                echo json_encode($ctxt->getTasks($jwt->decodeJWT($_GET['Token'])->Id));
                 break;
             
     

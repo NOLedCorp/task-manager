@@ -6,6 +6,8 @@ export interface Project{
     File:string;
     CreateUserId: number;
     CreateDate: Date;
+
+    Tasks?:Task[];
 }
 
 export interface ProjectUser{
