@@ -1,1 +1,1 @@
-<h4 *ngFor="let p of projects" [routerLink]="['../project', p.Id]">{{p.Name}}</h4>
+<project-card [item]="p" *ngFor="let p of projects" [routerLink]="['../project', p.Id]"></project-card>

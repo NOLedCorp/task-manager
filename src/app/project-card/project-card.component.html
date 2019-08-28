@@ -1,0 +1,8 @@
+<div class="item">
+    <h4 class="mb-0">{{item.Name}}</h4>
+    <a href="{{item.ClientLink?item.ClientLink:item.GitHubLink}}">{{item.ClientLink?item.ClientLink:item.GitHubLink}}</a>
+    <div class="options">
+        <span class="option" [status]="item.Status">{{item.Status}}</span>
+        <span class="option" [type]="item.Type">{{item.Type}}</span>
+    </div>
+</div>

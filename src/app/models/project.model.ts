@@ -6,6 +6,8 @@ export interface Project{
     File:string;
     CreateUserId: number;
     CreateDate: Date;
+    Status:ProjectStatus;
+    Type: ProjectType;
 
     Tasks?:Task[];
 }
@@ -82,4 +84,20 @@ export enum RoleTypes{
     Designer = 'designer',
     Developer = 'developer',
     Tester = 'tester'
+}
+
+export enum ProjectStatus{
+    Planning = 'planning',
+    Active = 'active',
+    Testing = 'testing',
+    Frozen = 'frozen',
+    Closed = 'closed'
+}
+
+export enum ProjectType{
+    Landing = 'landing',
+    Card = 'card',
+    EShop = 'e-shop',
+    InfoPortal = 'info-portal',
+    BusinessPortal = 'business-portal'
 }

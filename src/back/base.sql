@@ -11,6 +11,9 @@ CREATE TABLE IF NOT EXISTS projects (
     GitHubLink varchar(255) NOT NULL,
     ClientContact varchar(255) NOT NULL,
     File varchar(255) NULL,
+    Type ENUM('landing', 'card', 'e-shop', 'info-portal', 'business-portal') DEFAULT 'landing',
+    Status ENUM('planning', 'active', 'testing', 'frozen', 'closed') DEFAULT 'planning',
+    ClientLink varchar(255) NULL,
     CreateUserId int(20) NOT NULL,
     CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
 
@@ -28,7 +31,7 @@ CREATE TABLE IF NOT EXISTS projectusers (
 	UserId int(20) NOT NULL,
     ProjectId int(20) NOT NULL,
     CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-    Roles SET ('teamlead', 'clientmanager', 'designer', 'developer', 'tester') NOT NULL
+    Roles SET ('teamlead', 'clientmanager', 'designer', 'developer', 'tester') NOT NULL,
 
     CONSTRAINT projectuser_user_fk FOREIGN KEY(UserId) REFERENCES users(Id) ON DELETE RESTRICT,
     CONSTRAINT projectuser_project_fk FOREIGN KEY(ProjectId) REFERENCES projects(Id) ON DELETE CASCADE,

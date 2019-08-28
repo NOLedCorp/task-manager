@@ -36,6 +36,7 @@ import { StatusDirective } from './directives/status.directive';
 import { TaskDirective } from './directives/task.directive';
 import { PriorityDirective } from './directives/priority.directive';
 import { RolePipe } from './pipes/role.pipe';
+import { ProjectCardComponent } from './project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RolePipe } from './pipes/role.pipe';
     StatusDirective,
     TaskDirective,
     PriorityDirective,
-    RolePipe
+    RolePipe,
+    ProjectCardComponent
   ],
   imports: [
     BrowserModule,
