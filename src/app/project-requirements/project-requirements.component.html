@@ -1,1 +1,1 @@
-<h4 *ngFor="let req of reqs" [routerLink]="['../requirement', req.Id]">{{req.Name}}</h4>
+<work-item *ngFor="let req of reqs" [item]="req" [routerLink]="['../requirement', req.Id]"></work-item>

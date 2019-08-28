@@ -1,1 +1,8 @@
-<h4 *ngFor="let t of team" >{{t.Name}}</h4>
+<!-- <h4 *ngFor="let t of team" >{{t.Name}}</h4> -->
+<div class="pt-5 d-flex flex-wrap">
+    <div class="item" *ngFor="let t of team">
+        <img src="{{t.Photo}}">
+        <p>{{t.Name}}</p>
+        <p>{{t.Roles | role: true}}</p>
+    </div>
+</div>

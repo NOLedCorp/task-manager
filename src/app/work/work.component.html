@@ -1,1 +1,2 @@
-<h4 *ngFor="let task of tasks" [routerLink]="[task.Type==taskTypes.Task?'../task':'../bug', task.Id]">{{task.Name}}</h4>
+
+<work-item *ngFor="let task of tasks" [item]="task" [routerLink]="[task.Type==taskTypes.Task?'../task':'../bug', task.Id]"></work-item>

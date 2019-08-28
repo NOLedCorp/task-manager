@@ -26,6 +26,7 @@ export class WorkComponent implements OnInit {
   getProjectTasks(id){
     this.ps.getProjectTasks(id).subscribe(tasks => {
       this.tasks = tasks;
+      console.log(tasks);
     })
   }
 

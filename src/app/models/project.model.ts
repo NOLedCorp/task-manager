@@ -54,20 +54,30 @@ export enum Roles{
 
 export enum TaskTypes{
     Task = 'task',
-    Bug = 'bug'
+    Bug = 'bug',
+    Requirement = 'requirement'
 }
 
 export enum StatusTypes{
-    Proposed = 1,
-    Active = 2,
-    Resolved = 3,
-    Testing = 4,
-    Closed = 5
+    Proposed = 'proposed',
+    Active = 'active',
+    Resolved = 'resolved',
+    Testing = 'testing',
+    Closed = 'closed'
 }
 
 export enum PriorityTypes{
-    Critical = 1,
-    High = 2,
-    Medium = 3,
-    Low = 4
+    Critical = 'critical',
+    High = 'high',
+    Medium = 'medium',
+    Low = 'low'
+}
+
+
+export enum RoleTypes{
+    TeamLead = 'teamlead',
+    ClientManager = 'clientmanager',
+    Designer = 'designer',
+    Developer = 'developer',
+    Tester = 'tester'
 }

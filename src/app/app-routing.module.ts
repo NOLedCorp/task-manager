@@ -15,7 +15,7 @@ import { UserGuard } from './guards/user.guard';
 import { ProjectGuard } from './guards/project.guard';
 
 const projectRouts: Routes = [
-  {path: '', redirectTo: 'review', pathMatch: 'full'},
+  {path: '', redirectTo: 'mywork', pathMatch: 'full'},
   {path: 'review', component: ProjectReviewComponent},
   {path: 'mywork', component: WorkComponent},
   {path: 'requirements', component: ProjectRequirementsComponent},

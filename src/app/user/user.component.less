@@ -1,8 +1,11 @@
 @import '../../colors.less';
 .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    &>div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
     border-bottom: 1px solid lightgray;
     .menu{
         .item{
@@ -38,4 +41,10 @@
             text-decoration: underline;
         }
     }
+}
+
+.container-fluid{
+    max-width: 1400px;
+    padding-right: 32px;
+    padding-left: 32px;
 }

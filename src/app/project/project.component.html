@@ -1,11 +1,17 @@
-<div class="menu">
-    <div [routerLink]="['review']"
-    routerLinkActive="active" class="item">Обзор</div>
-    <div [routerLink]="['mywork']"
-    routerLinkActive="active" class="item">Мои задачи</div>
-    <div [routerLink]="['team']"
-    routerLinkActive="active" class="item">Команда</div>
-    <div [routerLink]="['requirements']"
-    routerLinkActive="active" class="item">Требования</div>
+<div class="d-flex">
+    <div class="name" *ngIf="project">
+        {{project.Name}}<i class="fas fa-sort-down ml-2 position-relative" style="bottom: 2px;"></i><span class="mx-3">|</span>
+    </div>
+    <div class="menu">
+        <!-- <div [routerLink]="['review']"
+        routerLinkActive="active" class="item">Обзор</div> -->
+        <div [routerLink]="['mywork']"
+        routerLinkActive="active" class="item">Мои задачи</div>
+        <div [routerLink]="['team']"
+        routerLinkActive="active" class="item">Команда</div>
+        <div [routerLink]="['requirements']"
+        routerLinkActive="active" class="item">Требования</div>
+    </div>
 </div>
+
 <router-outlet></router-outlet>

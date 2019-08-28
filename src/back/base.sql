@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS requirements (
     Description text NOT NULL,
     Status ENUM('proposed', 'active', 'resolved', 'testing', 'closed'),
     Priority ENUM('critical', 'high', 'medium', 'low'),
+    Type ENUM('requirement') DEFAULT 'requirement',
     CreateUserId int(20) NOT NULL,
     CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
 

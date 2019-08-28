@@ -1,0 +1,37 @@
+@import '../../colors.less';
+.item{
+    padding: 10px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid lightgray;
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover{
+        border-bottom: 1px solid black;
+    }
+    h4{
+        color: @blue;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    .d-flex{
+        *{
+            color: gray;
+        }
+    }
+    .options{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+
+        .option{
+            padding: 0 5px;
+            padding-bottom: 1px;
+            font-size: 14px;
+            border-radius: 3px;
+            &:not(:last-child){
+                margin-right: 5px;
+            }
+        }
+        
+    }
+}

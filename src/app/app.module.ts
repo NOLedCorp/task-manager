@@ -31,6 +31,11 @@ import { ApiInterceptor } from './api.interceptor';
 import { UserService } from './services/user.service';
 import { ProjectGuard } from './guards/project.guard';
 import { GitHubService } from './services/github.service';
+import { WorkItemComponent } from './work-item/work-item.component';
+import { StatusDirective } from './directives/status.directive';
+import { TaskDirective } from './directives/task.directive';
+import { PriorityDirective } from './directives/priority.directive';
+import { RolePipe } from './pipes/role.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import { GitHubService } from './services/github.service';
     ProjectRequirementsComponent,
     TeamComponent,
     RequirementComponent,
-    TaskComponent
+    TaskComponent,
+    WorkItemComponent,
+    StatusDirective,
+    TaskDirective,
+    PriorityDirective,
+    RolePipe
   ],
   imports: [
     BrowserModule,

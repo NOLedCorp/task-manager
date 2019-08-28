@@ -1,5 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import './colors.less';
 *{
     box-sizing: border-box;
     outline: none !important;
+}
+
+.status-proposed{
+    color: white;
+    background-color: @proposed;
+    
+}
+
+.status-active{
+    color: rgb(0, 0, 0);
+    background-color: @active;
+}
+
+.status-resolved{
+    color: white;
+    background-color: @resolved;
+}
+
+.status-testing{
+    color: white;
+    background-color: @testing;
+}
+
+.status-closed{
+    color: white;
+    background-color: @closed;
+}
+
+.task-bug{
+    color: white;
+    background-color: @bug;
+}
+
+.task-requirement{
+    color: white;
+    background-color: @requirement;
+}
+
+.priority-critical{
+    color: white;
+    background-color: @critical;
 }
