@@ -1,0 +1,90 @@
+.container-fluid{
+    background-image: url('../../assets/images/background.png');
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form{
+        width: 600px;
+        padding: 30px 20px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 0 0 transparent;
+        flex-direction: column;
+        align-items: flex-start;
+        display: flex;
+        color: white;
+        position: relative;
+        top: -30px;
+        animation: show .8s forwards ease-out;
+        .tape{
+           
+            
+            position: relative;
+            display: inline-block;
+            
+            
+            p{
+                overflow: hidden;
+                width: 350px;
+                animation: type 3s steps(43, end);
+                margin: 0;
+                white-space: nowrap;
+                
+            }
+
+            h3{
+                overflow: hidden;
+                width: 220px;
+                animation: type 1.5s steps(43, end);
+                margin: 0;
+                white-space: nowrap;
+                
+            }
+
+            span{
+                content: '';
+                display: block;
+                opacity: 0;
+                position: absolute;
+                left: calc( 100% + 4px);
+                bottom: 6px;
+                background-color: #fff;
+                height: 1px;
+                width: 10px;
+                animation: glips .5s infinite;
+            }
+        }
+        
+        &>.link{
+            margin-top: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a{
+                width: 20%;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        
+    }
+}
+
+@keyframes show{
+    from { box-shadow: 0 0 0 transparent }
+    to { box-shadow: 0 10px 10px black; }
+}
+
+@keyframes glips{
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes type{
+    0% {  width: 0; }
+    50% { opacity: 1; width: 0;}
+}
