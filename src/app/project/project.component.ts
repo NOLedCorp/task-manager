@@ -5,6 +5,7 @@ import { switchMap, tap } from 'rxjs/internal/operators';
 import { Project } from '../models/project.model';
 import { forkJoin } from 'rxjs';
 import { UserService } from '../services/user.service';
+import { LoadService } from '../services/load.service';
 
 @Component({
   selector: 'app-project',
@@ -15,7 +16,7 @@ export class ProjectComponent implements OnInit {
   project:Project;
   projects:Project[];
   show:boolean = false;
-  constructor(private route:ActivatedRoute, private ps:ProjectService, private us:UserService) { }
+  constructor(private ls:LoadService, private route:ActivatedRoute, private ps:ProjectService, private us:UserService) { }
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -24,13 +25,14 @@ export class ProjectComponent implements OnInit {
   }
 
   init(id){
+    this.ls.showLoad = true;
     forkJoin([
       this.ps.getProject(id),
       this.us.getUserProjects()
     ]).pipe(
       tap(x => {
         [this.project, this.projects] = x;
-        console.log(this.projects);
+        this.ls.showLoad = false;
       })
     ).subscribe()
   }

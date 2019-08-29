@@ -38,6 +38,8 @@ import { PriorityDirective } from './directives/priority.directive';
 import { RolePipe } from './pipes/role.pipe';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { FiltersComponent } from './filters/filters.component';
+import { LoadComponent } from './load/load.component';
+import { LoadService } from './services/load.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { FiltersComponent } from './filters/filters.component';
     PriorityDirective,
     RolePipe,
     ProjectCardComponent,
-    FiltersComponent
+    FiltersComponent,
+    LoadComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { FiltersComponent } from './filters/filters.component';
       multi: true
     },
     HttpClient,
-    GitHubService
+    GitHubService,
+    LoadService
   ],
   bootstrap: [AppComponent]
 })

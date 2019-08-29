@@ -19,8 +19,8 @@
     .user{
         display: flex;
         align-items: center;
-        margin-right: 10px;
-        padding-right: 10px;
+        margin-right: 20px;
+        padding-right: 20px;
         border-right: 1px solid @gray-border;
         img{
             width: 30px;
@@ -31,22 +31,95 @@
         p{
             margin: 0;
             font-size: 18px;
+            margin-right: 8px;
+            cursor: pointer;
+            &:hover{
+                color: @blue;
+            }
         }
-    }
-    i{
-        
-        padding: 8px;
-        border-radius: 3px;
-        border: 1px solid @blue;
-        display: flex;align-items: center;
-        justify-content: center;
-        margin-left: 20px;
 
-        &:hover{
-            background-color: @blue;
-            color: #fff;
+        i{
+            margin-bottom: -2px;
+            font-size: 22px;
+            cursor: pointer;
+            &:hover{
+                color: @blue;
+            }
         }
     }
+    .add{
+        position: relative;
+        &>i{
+            padding: 8px;
+            display: flex;align-items: center;
+            justify-content: center;
+            margin-left: 5px;
+            cursor: pointer;
+            &:hover{
+                color:@blue;
+            }
+        }
+        &>i.fa-plus{
+        
+            margin-left: 8px;
+            border-radius: 3px;
+            border: 1px solid @blue;
+            
+            
+    
+            &:hover{
+                background-color: @blue;
+                color: #fff;
+            }
+        }
+
+        .addings{
+            position: absolute;
+            top: calc( 100% + 15px);
+            right: 0;
+            border-radius: 3px;
+            border: 1px solid @blue;
+            background-color: #fff;
+            min-width: 200px;
+            z-index: 10;
+            padding: 10px;
+            display: none;
+            
+            flex-direction: column;
+
+            &.show{
+                display: flex;
+            }
+
+            p{
+
+                border-bottom: 3px solid @gray-border; 
+                margin-bottom: 5px;
+                padding-bottom: 3px;
+                cursor: pointer;
+                i{
+                    width: 16px;
+                    margin-right: 2px;
+                }
+                &:hover{
+                    border-color: @blue; 
+                }
+            }
+
+            &:before{
+                content: '';
+                position:absolute;
+                display: block;
+                width:0;
+                height:0;
+                right:15px;
+                bottom:100%;
+                border:8px solid;
+                border-color:transparent @blue @blue transparent;
+            }
+        }
+    }
+    
 }
 
 .menu{

@@ -7,9 +7,10 @@
         display: none;
         top: calc( 100% + 15px);
         background-color: #fff;
+        flex-direction: column;
         padding: 10px;
         border-radius: 3px;
-        min-width: 200px;
+        min-width: 150px;
         z-index: 10;
         border: 1px solid @gray-border;
         p{
@@ -21,7 +22,7 @@
         }
 
         &.show{
-            display: block !important;
+            display: flex !important;
         }
         
         &:before{

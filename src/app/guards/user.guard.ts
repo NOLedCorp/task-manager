@@ -23,6 +23,7 @@ export class UserGuard implements CanActivate{
                 })
             )
          }else{
+            this.router.navigate(['/auth']);
              return false;
          }
     }

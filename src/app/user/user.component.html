@@ -4,7 +4,8 @@
             <div class="d-flex align-items-center">
                 <div class="user">
                     <img src="{{user.Photo}}">
-                    <p>{{user.Name}}</p>
+                    <p title="Редактировать информацию пользователя">{{user.Name}}</p>
+                    <i title="Выйти" (click)="exit()" class="fas fa-sign-out-alt"></i>
                 </div>
                 <div class="menu">
                     <div [routerLink]="['projects']"
@@ -12,13 +13,23 @@
                     <div [routerLink]="['work']"
                     routerLinkActive="active" class="item">Работа</div>
                     <div [routerLink]="['notificaions']"
-                    routerLinkActive="active" class="item">Уведомления</div>
+                    routerLinkActive="active" class="item">Календарь</div>
+                    <div [routerLink]="['notificaions']"
+                    routerLinkActive="active" class="item">Заметки</div>
                 </div>
             </div>
             
-            <div class="d-flex align-items-center">
-                
-                <i class="fas fa-plus"></i>
+            <div class="d-flex align-items-center add">
+                <i class="fas fa-search" title="Поиск по задачам"></i>
+                <i class="fas fa-info-circle" title="Информация о портале"></i>
+                <i class="fas fa-bell" title="Уведомления"></i>
+                <i class="fas fa-plus" (click)="toggleShow()" title="Добавление элементов"></i>
+                <div class="addings" [class.show]="show">
+                    <p class="adding"><i class="fas fa-briefcase"></i> Создать проект</p>
+                    <p class="adding"><i class="fas fa-tasks"></i> Создать задачу</p>
+                    <p class="adding"><i class="far fa-file-alt"></i> Создать требование</p>
+                    <p class="adding"><i class="far fa-clipboard"></i> Создать заметку</p>
+                </div>
             </div>
             
         </div>
