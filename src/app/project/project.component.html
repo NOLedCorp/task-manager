@@ -1,6 +1,9 @@
 <div class="d-flex">
-    <div class="name" *ngIf="project">
+    <div class="name"  (click)="toggleProjects()" *ngIf="project">
         {{project.Name}}<i class="fas fa-sort-down ml-2 position-relative" style="bottom: 2px;"></i><span class="mx-3">|</span>
+        <div class="projects" [class.show]="show" >
+            <p *ngFor="let p of projects" [class.active]="p.Id==project.Id" [routerLink]="['../', p.Id]">{{p.Name}}</p>
+        </div>
     </div>
     <div class="menu">
         <!-- <div [routerLink]="['review']"

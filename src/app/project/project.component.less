@@ -1,4 +1,42 @@
 @import '../user/user.component.less';
+.name{
+    position: relative;
+    cursor: pointer;
+    .projects{
+        position: absolute;
+        display: none;
+        top: calc( 100% + 15px);
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 3px;
+        min-width: 200px;
+        z-index: 10;
+        border: 1px solid @gray-border;
+        p{
+            margin-bottom: 5px;
+            cursor: pointer;
+            &:hover, &.active{
+                font-weight: 500;
+            }
+        }
+
+        &.show{
+            display: block !important;
+        }
+        
+        &:before{
+            content: '';
+            position:absolute;
+            display: block;
+            width:0;
+            height:0;
+            left:10px;
+            bottom:100%;
+            border:10px solid;
+            border-color:transparent transparent @gray-border @gray-border;
+        }
+    }
+}
 .menu{
     .item{
         color: rgb(129, 129, 129);

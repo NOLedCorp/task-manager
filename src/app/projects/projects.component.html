@@ -1,1 +1,13 @@
-<project-card [item]="p" *ngFor="let p of projects" [routerLink]="['../project', p.Id]"></project-card>
+<div class="head">
+    <div class="sort">
+        <p class="m-0">Сортировать по завершенности</p>
+        <i class="fas fa-sort"></i>
+    </div>
+    <div class="search">
+        <input type="text">
+        <i class="fas fa-search"></i>
+    </div>
+</div>
+<div class="list">
+    <project-card [item]="p" *ngFor="let p of projects" [routerLink]="['../project', p.Id]"></project-card>
+</div>

@@ -47,6 +47,17 @@ export interface Requirement{
     CreateDate: Date;
 }
 
+export interface Filter{
+    Type:FilterType;
+    Options:FilterOption[];
+}
+
+export interface FilterOption{
+    Name: TaskTypes | StatusTypes | PriorityTypes | 'yes' | 'no';
+    Number:number;
+    Active: boolean;
+}
+
 export enum Roles{
     TeamLead = 1,
     ClientManager = 2,
@@ -100,4 +111,11 @@ export enum ProjectType{
     EShop = 'e-shop',
     InfoPortal = 'info-portal',
     BusinessPortal = 'business-portal'
+}
+
+export enum FilterType{
+    Type = 'type',
+    Priority = 'priority',
+    AssignToMe = 'assign-to-me',
+    Status = 'status',
 }

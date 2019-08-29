@@ -1,18 +1,26 @@
 <div *ngIf="user">
     <div class="header py-1 mb-2">
         <div class="container-fluid">
-            <div class="menu">
-                <div [routerLink]="['projects']"
-                routerLinkActive="active" class="item">Проекты</div>
-                <div [routerLink]="['work']"
-                routerLinkActive="active" class="item">Работа</div>
-                <div [routerLink]="['notificaions']"
-                routerLinkActive="active" class="item">Уведомления</div>
+            <div class="d-flex align-items-center">
+                <div class="user">
+                    <img src="{{user.Photo}}">
+                    <p>{{user.Name}}</p>
+                </div>
+                <div class="menu">
+                    <div [routerLink]="['projects']"
+                    routerLinkActive="active" class="item">Проекты</div>
+                    <div [routerLink]="['work']"
+                    routerLinkActive="active" class="item">Работа</div>
+                    <div [routerLink]="['notificaions']"
+                    routerLinkActive="active" class="item">Уведомления</div>
+                </div>
             </div>
-            <div class="user">
-                <img src="{{user.Photo}}">
-                <p>{{user.Name}}</p>
+            
+            <div class="d-flex align-items-center">
+                
+                <i class="fas fa-plus"></i>
             </div>
+            
         </div>
         
     </div>

@@ -1,0 +1,49 @@
+@import '../../colors.less';
+.filters{
+    border-left: 1px solid @gray-border;
+    padding-left: 10px;
+    .filter{
+        margin-bottom: 15px;
+        h4{
+            text-transform: capitalize;
+            color: @blue;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            white-space: nowrap;
+            &:hover{
+                span{
+                    transform: scaleX(1);
+                }
+            }
+            span{
+                transition: 0.3s;
+                transform-origin: left;
+                width: 100%;
+                transform: scaleX(0);
+                display: block;
+                height: 1px;
+                max-height: 1px;
+                border-bottom: 1px solid @gray-border;
+                margin: 0 10px;
+            }
+        }
+        .option{
+            padding-left: 10px;
+            display: flex;
+            justify-content: space-between;
+            
+
+            &.disabled{
+                color:rgb(197, 197, 197);
+                cursor: default;
+            }
+
+            &.active, &:hover:not(.disabled){
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}
