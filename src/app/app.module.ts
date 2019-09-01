@@ -40,6 +40,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { FiltersComponent } from './filters/filters.component';
 import { LoadComponent } from './load/load.component';
 import { LoadService } from './services/load.service';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { LoadService } from './services/load.service';
     TaskDirective,
     PriorityDirective,
     RolePipe,
+    FilterPipe,
     ProjectCardComponent,
     FiltersComponent,
     LoadComponent

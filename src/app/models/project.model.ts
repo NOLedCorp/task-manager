@@ -116,6 +116,6 @@ export enum ProjectType{
 export enum FilterType{
     Type = 'type',
     Priority = 'priority',
-    AssignToMe = 'assign-to-me',
+    AssignToMe = 'assigntome',
     Status = 'status',
 }
