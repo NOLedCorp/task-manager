@@ -13,6 +13,7 @@ export class WorkComponent implements OnInit {
   projects:Project[] = [];
   taskTypes = TaskTypes;
   shows:any = {};
+  showTasks: Task[] = [];
   constructor(private route:ActivatedRoute, private ps:ProjectService) { }
 
   ngOnInit() {
@@ -44,6 +45,10 @@ export class WorkComponent implements OnInit {
       this.shows[id]=!this.shows[id];
     }
     
+  }
+
+  applyFilters(tasks){
+    this.showTasks = tasks;
   }
 
 }

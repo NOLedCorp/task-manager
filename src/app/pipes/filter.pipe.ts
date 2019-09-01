@@ -4,7 +4,6 @@ import { RoleTypes, FilterType, TaskTypes, PriorityTypes, StatusTypes } from '..
 @Pipe({name: 'filter'})
 export class FilterPipe implements PipeTransform{
     transform(value: string){
-        console.log(value)
         return this.getValue(value);
         
     }
