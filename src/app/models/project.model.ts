@@ -48,8 +48,8 @@ export interface Requirement{
 }
 
 export interface Filter{
-    Type:FilterType;
-    Options:FilterOption[];
+    Type?:FilterType;
+    Options?:FilterOption[];
 }
 
 export interface FilterOption{

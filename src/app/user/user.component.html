@@ -5,7 +5,8 @@
                 <div class="user">
                     <img src="{{user.Photo}}">
                     <p title="Редактировать информацию пользователя">{{user.Name}}</p>
-                    <i title="Выйти" (click)="exit()" class="fas fa-sign-out-alt"></i>
+                    <i title="Выйти" (click)="exit()" class="fas fa-door-open"></i>
+                    <!-- <i class="fas fa-door-open"></i> -->
                 </div>
                 <div class="menu">
                     <div [routerLink]="['projects']"

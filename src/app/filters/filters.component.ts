@@ -1,108 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { Filter, FilterType, TaskTypes, PriorityTypes, StatusTypes } from '../models/project.model';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Filter, FilterType, TaskTypes, PriorityTypes, StatusTypes, FilterOption } from '../models/project.model';
 
 @Component({
   selector: 'task-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.less']
 })
-export class FiltersComponent implements OnInit {
-  filters:Filter[] = [
-    {
-      Type: FilterType.Type,
-      Options: [
-        {
-          Name: TaskTypes.Requirement,
-          Number: 3,
-          Active: false
-        },
-        {
-          Name: TaskTypes.Task,
-          Number: 0,
-          Active: false
-        },
-        {
-          Name: TaskTypes.Bug,
-          Number: 3,
-          Active: false
-        }
-      ]
-    },
-    {
-      Type: FilterType.Priority,
-      Options: [
-        {
-          Name: PriorityTypes.Critical,
-          Number: 1,
-          Active: false
-        },
-        {
-          Name: PriorityTypes.High,
-          Number: 10,
-          Active: false
-        },
-        {
-          Name: PriorityTypes.Medium,
-          Number: 3,
-          Active: false
-        },
-        {
-          Name: PriorityTypes.Low,
-          Number: 0,
-          Active: false
-        }
-      ]
-    },
-    {
-      Type: FilterType.Status,
-      Options: [
-        {
-          Name: StatusTypes.Proposed,
-          Number: 17,
-          Active: false
-        },
-        {
-          Name: StatusTypes.Active,
-          Number: 3,
-          Active: false
-        },
-        {
-          Name: StatusTypes.Resolved,
-          Number: 0,
-          Active: false
-        },
-        {
-          Name: StatusTypes.Testing,
-          Number: 3,
-          Active: false
-        },
-        {
-          Name: StatusTypes.Closed,
-          Number: 30,
-          Active: false
-        },
-      ]
-    },
-    {
-      Type: FilterType.AssignToMe,
-      Options: [
-        {
-          Name: 'yes',
-          Number: 3,
-          Active: true
-        },
-        {
-          Name: 'no',
-          Number: 30,
-          Active: false
-        }
-      ]
-    },
-  ]
-  constructor() { }
+export class FiltersComponent implements OnInit, OnChanges {
 
+  @Input('filters') filterHeaders: FilterType[];
+  @Input('items') itemsToFilter: any = [];
+  filters = {};
+
+  
+  constructor() {
+   }
+
+  ngOnChanges(ch){
+    if(ch.itemsToFilter){
+      this.setFilters();
+    }
+  }
   ngOnInit() {
-    console.log(this.filters)
+    if(this.itemsToFilter.length){
+      this.setFilters();
+    }
+    
+  }
+
+  setFilters(){
+    this.filterHeaders.forEach(h => {
+      this.filters[h]={};
+      let options = this.itemsToFilter.map(x => x[h]);
+      this.filters[h] = options.reduce((acc, el) => {
+        if(!acc[el]){
+          acc[el] = {}
+        }
+        if(!acc[el].Name){
+          acc[el].Name = el;
+        }
+        acc[el].Number = (acc[el].Number || 0) + 1;
+        acc[el].Active = this.getActive(h, el);
+        return acc;
+      }, {})
+    })
+
+
+  }
+
+  getActive(fName, oName){
+    return false
+  }
+
+  activateFilter(name, option){
+    this.filters[name][option].Active = !this.filters[name][option].Active; 
+  }
+
+
+  getOptions(filter){
+
+    return Object.values(filter);
   }
 
 }

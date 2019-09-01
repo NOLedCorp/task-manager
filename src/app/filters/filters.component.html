@@ -1,7 +1,7 @@
 <div class="filters">
-    <div class="filter" *ngFor="let filter of filters">
-        <h4>{{filter.Type}}<span></span> <i class="fas fa-angle-down"></i></h4>
-        <div class="option" *ngFor="let option of filter.Options" [class.active]="option.Active"
+    <div class="filter" *ngFor="let filter of filterHeaders">
+        <h4>{{filter}}<span></span> <i class="fas fa-angle-down"></i></h4>
+        <div class="option" *ngFor="let option of getOptions(filters[filter])" (click)="activateFilter(filter, option.Name)" [class.active]="option.Active"
          [class.disabled]="option.Number == 0"><span>{{option.Name}}</span><span>{{option.Number}}</span></div>
     </div>
 </div>
