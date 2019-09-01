@@ -22,7 +22,7 @@ export class PriorityDirective implements OnInit{
                 break;
             }
             case PriorityTypes.Medium: {
-                this.element.nativeElement.classList.add('task-active');
+                this.element.nativeElement.classList.add('status-active');
                 break;
             }
             case PriorityTypes.Low: {
