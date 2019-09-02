@@ -12,9 +12,6 @@ export class ProjectService{
     baseUrl:string='http://client.nomokoiw.beget.tech/task_manager/project/project.controller.php?';
 
     constructor(private router:Router, private http: HttpClient){  
-        this.http.get<any>('https://api.github.com/repos/NOLedCorp/task-manager/pulls').subscribe(x => {
-            console.log(x);
-        });
     }
 
     public checkProjectUser(projectId): Observable<boolean>{

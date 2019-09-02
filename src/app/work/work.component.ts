@@ -43,7 +43,6 @@ export class WorkComponent implements OnInit {
       this.projects = tasks;
       this.projectsTasks = this.getProjectsTasks;
       this.showProjects = JSON.parse(JSON.stringify(this.projects));
-      console.log(this.showProjects)
       this.show(tasks[0].Id, null);
     })
   }
@@ -56,16 +55,13 @@ export class WorkComponent implements OnInit {
   }
 
   applyFilters(tasks){
-    console.log(tasks)
     if(this.isProjects){
       this.showProjects.forEach(p => {
         p.Tasks=tasks.filter(t => t.ProjectId == p.Id);
       });
-      console.log(this.showProjects)
     }else{
       this.showTasks = tasks;
     }
-    console.log(true)
     
   }
 
