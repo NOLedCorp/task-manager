@@ -14,13 +14,17 @@ export class WorkComponent implements OnInit {
   taskTypes = TaskTypes;
   shows:any = {};
   showTasks: Task[] = [];
+  showProjects: Project[] = [];
+  isProjects = false;
   constructor(private route:ActivatedRoute, private ps:ProjectService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if(params['projectId']){
+        this.isProjects = false;
         this.getProjectTasks(params['projectId']);
       }else{
+        this.isProjects = true;
         this.getTasks();
       }
     })
@@ -36,6 +40,8 @@ export class WorkComponent implements OnInit {
   getTasks(){
     this.ps.getTasks().subscribe(tasks => {
       this.projects = tasks;
+      this.showProjects = JSON.parse(JSON.stringify(this.projects));
+      console.log(this.showProjects)
       this.show(tasks[0].Id, null);
     })
   }
@@ -48,7 +54,25 @@ export class WorkComponent implements OnInit {
   }
 
   applyFilters(tasks){
-    this.showTasks = tasks;
+    console.log(tasks)
+    if(this.isProjects){
+      this.showProjects.forEach(p => {
+        p.Tasks=tasks.filter(t => t.ProjectId == p.Id);
+      });
+      console.log(this.showProjects)
+    }else{
+      this.showTasks = tasks;
+    }
+    console.log(true)
+    
+  }
+
+  get projectsTasks() {
+    let result = [];
+     this.projects.forEach(x => {
+       result.push(...x.Tasks);
+     })
+     return result;
   }
 
 }

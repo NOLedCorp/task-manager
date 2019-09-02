@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Filter, FilterType, TaskTypes, PriorityTypes, StatusTypes, FilterOption } from '../models/project.model';
 
 @Component({
@@ -30,7 +30,6 @@ export class FiltersComponent implements OnInit, OnChanges {
     if(this.itemsToFilter.length){
       this.setFilters();
       this.filter();
-      this.onFilter.emit(this.filtered);
     }
     
   }

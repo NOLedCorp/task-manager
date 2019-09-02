@@ -4,7 +4,7 @@
             <work-item *ngFor="let task of showTasks" [item]="task" [routerLink]="['../'+task.Type, task.Id]"></work-item>
         </div>
         <div *ngIf="projects.length" class="projects">
-            <div class="project" *ngFor="let p of projects">
+            <div class="project" *ngFor="let p of showProjects">
                 <div class="header" (click)="show(p.Id, $event)">
                     <div>
                         <h4 [routerLink]="['../project',p.Id]" class="mb-0">{{p.Name}}</h4>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col-sm-3 pl-0">
-        <task-filters [filters]="['Type', 'Priority', 'Status', 'AssignToMe']" (onFilter)="applyFilters($event)" [items]="tasks"></task-filters>
+        <task-filters [filters]="['Type', 'Priority', 'Status', 'AssignToMe']" (onFilter)="applyFilters($event)" [items]="projects.length?projectsTasks:tasks"></task-filters>
     </div>
 </div>
 
