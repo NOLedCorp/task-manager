@@ -10,6 +10,7 @@ import { Task, TaskTypes, Project } from '../models/project.model';
 })
 export class WorkComponent implements OnInit {
   tasks:Task[] = [];
+  projectsTasks:Task[] = [];
   projects:Project[] = [];
   taskTypes = TaskTypes;
   shows:any = {};
@@ -40,6 +41,7 @@ export class WorkComponent implements OnInit {
   getTasks(){
     this.ps.getTasks().subscribe(tasks => {
       this.projects = tasks;
+      this.projectsTasks = this.getProjectsTasks;
       this.showProjects = JSON.parse(JSON.stringify(this.projects));
       console.log(this.showProjects)
       this.show(tasks[0].Id, null);
@@ -67,7 +69,7 @@ export class WorkComponent implements OnInit {
     
   }
 
-  get projectsTasks() {
+  get getProjectsTasks() {
     let result = [];
      this.projects.forEach(x => {
        result.push(...x.Tasks);
