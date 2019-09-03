@@ -1,0 +1,77 @@
+
+@import '../work-item/work-item.component.less';
+
+.container-fluid{
+    
+
+    .body{
+        display: flex;
+        margin-top: 10px;
+        .content{
+            flex:1;
+            
+            margin-right: 10px;
+
+            .main-content{
+                display: flex;
+                flex-direction: column;
+                .description{
+                    
+                    flex: 1;
+                }
+                .files{
+                    h4{
+                        color: @blue;
+                        font-size: 20px;
+                        margin-bottom: 5px;
+                    }
+                    min-height: 200px;
+                    margin-top: 10px;
+
+                    .file{
+                        cursor: pointer;
+                        display: block;
+                        text-decoration: none;
+                        color: black;
+                        &:hover{
+                            border-top: 1px solid @gray-border;
+                            border-bottom: 1px solid @gray-border;
+                        }
+                        i{
+                            margin-right: 5px;
+                        }
+                        span{
+                            margin: 0 10px;
+                        }
+                    }
+                }
+            }
+            .additional-content{
+                border-right: 1px solid @gray-border;
+                border-left: 1px solid @gray-border;
+            }
+        }
+        .menu{
+            .item{
+                padding: 5px 0;
+                border-bottom: 1px solid @gray-border;
+                i{
+                    padding: 10px;
+                    border-radius: 5px;
+    
+                    &:hover, &.active{
+                        background-color: @blue;
+                        color: #fff;
+                    }
+
+                    &.fa-edit{
+                        padding-left: 12px;
+                        padding-right: 8px;
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

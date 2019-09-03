@@ -11,10 +11,7 @@ import { of, Observable } from 'rxjs';
 export class ProjectService{
     baseUrl:string='http://client.nomokoiw.beget.tech/task_manager/project/project.controller.php?';
 
-    constructor(private router:Router, private http: HttpClient){  
-        this.http.get<any>('https://api.github.com/repos/NOLedCorp/task-manager/pulls').subscribe(x => {
-            console.log(x);
-        });
+    constructor(private router:Router, private http: HttpClient){
     }
 
     public checkProjectUser(projectId): Observable<boolean>{
@@ -39,6 +36,9 @@ export class ProjectService{
 
     public getTasks(): Observable<Project[]> {
         return this.http.get<Project[]>(this.baseUrl + 'Key=get-tasks');
+    }
+    public getTask(taskId): Observable<Task> {
+        return this.http.get<Task>(this.baseUrl + 'Key=get-task&TaskId='+taskId);
     }
 
 }

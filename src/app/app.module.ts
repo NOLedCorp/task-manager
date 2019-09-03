@@ -24,7 +24,6 @@ import { NotificationComponent } from './notification/notification.component';
 import { ProjectReviewComponent } from './project-review/project-review.component';
 import { ProjectRequirementsComponent } from './project-requirements/project-requirements.component';
 import { TeamComponent } from './team/team.component';
-import { RequirementComponent } from './requirement/requirement.component';
 import { TaskComponent } from './task/task.component';
 import { UserGuard } from './guards/user.guard';
 import { ApiInterceptor } from './api.interceptor';
@@ -41,6 +40,10 @@ import { FiltersComponent } from './filters/filters.component';
 import { LoadComponent } from './load/load.component';
 import { LoadService } from './services/load.service';
 import { FilterPipe } from './pipes/filter.pipe';
+import { TaskInfoComponent } from './task-info/task-info.component';
+import { TaskLinksComponent } from './task-links/task-links.component';
+import { TaskMessagerComponent } from './task-messager/task-messager.component';
+import { TaskHistoryComponent } from './task-history/task-history.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,6 @@ import { FilterPipe } from './pipes/filter.pipe';
     ProjectReviewComponent,
     ProjectRequirementsComponent,
     TeamComponent,
-    RequirementComponent,
     TaskComponent,
     WorkItemComponent,
     StatusDirective,
@@ -65,7 +67,11 @@ import { FilterPipe } from './pipes/filter.pipe';
     FilterPipe,
     ProjectCardComponent,
     FiltersComponent,
-    LoadComponent
+    LoadComponent,
+    TaskInfoComponent,
+    TaskLinksComponent,
+    TaskMessagerComponent,
+    TaskHistoryComponent
   ],
   imports: [
     BrowserModule,
