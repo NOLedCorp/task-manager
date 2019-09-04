@@ -1,1 +1,39 @@
-<p>task works!</p>
+<div class="container-fluid p-sm-0" *ngIf="item">
+    <div class="item">
+        <h4>{{item.Name}}</h4>
+        <div class="user">
+            #{{item.Id}}
+            <span class="mx-2">|</span>
+            {{item.UserName}}
+        </div>
+        <div class="options mt-3">
+            <span class="option" [status]="item.Status">{{item.Status}}</span>
+            <span *ngIf="item.Priority" class="option" [priority]="item.Priority">{{item.Priority}}</span>
+            <span class="option" [type]="item.Type">{{item.Type}}</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="content row">
+            <div class="main-content col-sm-7">
+                <div class="description" [innerHTML]="item.Description">
+                    
+                </div>
+                <div class="files" *ngIf="item.Files.length">
+                    <h4>Файлы</h4>
+                    <a [href]="f.Path" class="file" *ngFor="let f of item.Files">
+                        <i class="far {{getFileClass(f.Name)}}"></i>{{f.Name}}<span>|</span>{{f.Size}}кб.
+                    </a>
+                </div>
+            </div>
+            <div class="additional-content col-sm-5"><router-outlet></router-outlet></div>
+        </div>
+        <div class="menu">
+            <div class="item" ><i [routerLink]="['info']" routerLinkActive="active" class="fas fa-info-circle"></i></div>
+            <div class="item" ><i [routerLink]="['links']" routerLinkActive="active" class="fas fa-link"></i></div>
+            <div class="item" ><i [routerLink]="['messager']" routerLinkActive="active" class="fas fa-comment-dots"></i></div>
+            <div class="item" ><i [routerLink]="['history']" routerLinkActive="active" class="fas fa-book-open"></i></div>
+            <div class="item"><i [class.active]="isEditting" (click)="edit()" class="fas fa-edit"></i></div>
+        </div>
+    </div>
+    
+</div>

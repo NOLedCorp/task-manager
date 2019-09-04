@@ -71,3 +71,16 @@ CREATE TABLE IF NOT EXISTS links (
     CONSTRAINT links_pk PRIMARY KEY(ParentId, ChildId)
     
 );
+
+CREATE TABLE IF NOT EXISTS files (
+    Id int(20) PRIMARY KEY AUTO_INCREMENT,
+	Name varchar(255) NOT NULL,
+    OwnerId int(20) NOT NULL,
+    CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+    Type ENUM('task', 'project', 'message') NOT NULL,
+    Path varchar(255) NOT NULL,
+    Size float(10,2) NULL,
+    
+    INDEX(OwnerId, Type)
+    
+);

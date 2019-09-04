@@ -76,6 +76,35 @@ class DataBase {
         $s->execute(array($id));
         return $s->fetch()[$column];
     }
+    
+    private function genTestTasks(){
+        $taskTypes = ['requirement', 'task', 'bug'];
+        $priorityTypes = ['critical', 'high', 'medium', 'low'];
+        $statusTypes = ['proposed', 'active', 'resolved', 'testing', 'closed'];
+        $userId= '340963685';
+        $projectId = '2';
+        $requirementId = '1';
+        $description = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nam dolore, voluptates fuga distinctio saepe temporibus minus molestias placeat, dicta cupiditate debitis! Hic accusantium voluptas assumenda nihil? Ducimus reiciendis sed obcaecati.';
+        for($i = 0; $i<100; $i++){
+            $task = array();
+            $task['Type']=$taskTypes[rand(0,2)];
+            if($task['Type']!='requirement'){
+                $task['RequirementId']=$requirementId;
+            }
+            $task['Status']=$statusTypes[rand(0,4)];
+            $task['Priority']=$priorityTypes[rand(0,3)];
+            $task['UserId']=$userId;
+            $task['ProjectId']=$projectId;
+            $task['CreateUserId']=$userId;
+            $task['Description']=$description;
+            $task['Name']="Тестовое задание Номер_2_$i";
+            $res = $this->genInsertQuery($task, 'tasks');
+            $s = $this->db->prepare($res[0]);
+            if($res[1][0]!=null){
+                $s->execute($res[1]);
+            }
+        }
+    }
 
     /**
      * Генерация запроса вставки
@@ -179,13 +208,14 @@ class DataBase {
         if(!$this->checkProjectUser($user_id, $project_id)){
             return false;
         }
+        //$this->genTestTasks();
         
         return $this->getMyProjectTasks($user_id, $project_id);
         
     }
     private function getMyProjectTasks($user_id, $project_id){
-        $s = $this->db->prepare("SELECT t.Id, t.Name, t.CreateDate, t.Status, t.Priority, u.Name as UserName, pu.Roles, t.Type FROM tasks t JOIN users u ON t.UserId=u.Id JOIN projectusers pu ON t.UserId=pu.UserId AND t.ProjectId=pu.ProjectId  WHERE t.ProjectId=? AND t.UserId=?");
-        $s->execute(array($project_id, $user_id));
+        $s = $this->db->prepare("SELECT t.Id, t.Name, t.ProjectId, t.CreateDate, t.Status, t.Priority, u.Name as UserName, pu.Roles, t.Type, (t.UserId=?) as AssignToMe FROM tasks t JOIN users u ON t.UserId=u.Id JOIN projectusers pu ON t.UserId=pu.UserId AND t.ProjectId=pu.ProjectId  WHERE t.ProjectId=?");
+        $s->execute(array($user_id, $project_id));
         $s->setFetchMode(PDO::FETCH_CLASS, 'Task');
         
         return $s->fetchAll();

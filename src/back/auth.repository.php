@@ -73,6 +73,7 @@ class DataBase {
         }else{
             $this->updateUser($user);
         }
+        unset($params['Photo']);
         return $this->jwt->getJWT($params);
     }
     
