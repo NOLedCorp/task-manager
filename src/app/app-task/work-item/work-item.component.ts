@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task, Requirement } from '../models/project.model';
+import { Task, Requirement } from '../../models/project.model';
 
 @Component({
   selector: 'work-item',

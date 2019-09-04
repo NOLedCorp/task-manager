@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectService } from '../services/project.service';
+import { ProjectService } from '../../services/project.service';
 import { switchMap, tap } from 'rxjs/internal/operators';
-import { Project } from '../models/project.model';
+import { Project } from '../../models/project.model';
 import { forkJoin } from 'rxjs';
-import { UserService } from '../services/user.service';
-import { LoadService } from '../services/load.service';
+import { UserService } from '../../services/user.service';
+import { LoadService } from '../../services/load.service';
 
 @Component({
   selector: 'app-project',

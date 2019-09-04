@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { UserComponent } from './user/user.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ProjectComponent } from './project/project.component';
-import { WorkComponent } from './work/work.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { ProjectReviewComponent } from './project-review/project-review.component';
-import { ProjectRequirementsComponent } from './project-requirements/project-requirements.component';
-import { TeamComponent } from './team/team.component';
-import { TaskComponent } from './task/task.component';
+import { ProjectsComponent } from './app-project/projects/projects.component';
+import { ProjectComponent } from './app-project/project/project.component';
+import { WorkComponent } from './app-task/work/work.component';
+import { NotificationsComponent } from './app-notify/notifications/notifications.component';
+import { ProjectReviewComponent } from './app-project/project-review/project-review.component';
+import { ProjectRequirementsComponent } from './app-project/project-requirements/project-requirements.component';
+import { TeamComponent } from './app-project/team/team.component';
+import { TaskComponent } from './app-task/task/task.component';
 import { UserGuard } from './guards/user.guard';
 import { ProjectGuard } from './guards/project.guard';
-import { TaskInfoComponent } from './task-info/task-info.component';
-import { TaskLinksComponent } from './task-links/task-links.component';
-import { TaskMessagerComponent } from './task-messager/task-messager.component';
-import { TaskHistoryComponent } from './task-history/task-history.component';
+import { TaskInfoComponent } from './app-task/task-info/task-info.component';
+import { TaskLinksComponent } from './app-task/task-links/task-links.component';
+import { TaskMessagerComponent } from './app-task/task-messager/task-messager.component';
+import { TaskHistoryComponent } from './app-task/task-history/task-history.component';
 
 const taskRouts: Routes = [
   {path: '', redirectTo: 'info', pathMatch: 'full'},

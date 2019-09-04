@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Filter, FilterType, TaskTypes, PriorityTypes, StatusTypes, FilterOption } from '../models/project.model';
+import { Filter, FilterType, TaskTypes, PriorityTypes, StatusTypes, FilterOption } from '../../models/project.model';
 
 @Component({
   selector: 'task-filters',

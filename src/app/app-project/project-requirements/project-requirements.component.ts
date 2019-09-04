@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../services/project.service';
-import { Requirement } from '../models/project.model';
+import { ProjectService } from '../../services/project.service';
+import { Requirement } from '../../models/project.model';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/internal/operators';
 

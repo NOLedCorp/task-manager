@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GitHubService } from '../services/github.service';
+import { GitHubService } from '../../services/github.service';
 import { switchMap } from 'rxjs/internal/operators';
-import { ProjectService } from '../services/project.service';
-import { Project } from '../models/project.model';
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../models/project.model';
 import { forkJoin } from 'rxjs';
 
 @Component({
