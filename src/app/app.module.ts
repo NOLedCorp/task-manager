@@ -44,6 +44,7 @@ import { TaskInfoComponent } from './app-task/task-info/task-info.component';
 import { TaskLinksComponent } from './app-task/task-links/task-links.component';
 import { TaskMessagerComponent } from './app-task/task-messager/task-messager.component';
 import { TaskHistoryComponent } from './app-task/task-history/task-history.component';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { TaskHistoryComponent } from './app-task/task-history/task-history.compo
     UserGuard,
     ProjectGuard,
     UserService,
+    TaskService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap, tap } from 'rxjs/internal/operators';
 import { Task } from '../../models/project.model';
 import { ProjectService } from '../../services/project.service';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-task',
@@ -12,7 +13,7 @@ import { ProjectService } from '../../services/project.service';
 export class TaskComponent implements OnInit {
   item:Task = null;
   isEditting = false;
-  constructor(private route:ActivatedRoute, private ps:ProjectService) { }
+  constructor(private route:ActivatedRoute, private ps:ProjectService, private ts:TaskService) { }
 
   ngOnInit() {
     // this.route.paramMap.pipe(
@@ -29,6 +30,7 @@ export class TaskComponent implements OnInit {
     this.ps.getTask(id).subscribe(x => {
       
       this.item = x;
+      this.ts.task = x;
     })
   }
 
