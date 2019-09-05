@@ -45,6 +45,7 @@ import { TaskLinksComponent } from './app-task/task-links/task-links.component';
 import { TaskMessagerComponent } from './app-task/task-messager/task-messager.component';
 import { TaskHistoryComponent } from './app-task/task-history/task-history.component';
 import { TaskService } from './services/task.service';
+import { ProgSelectComponent } from './library/prog-select/prog-select.component';
 
 @NgModule({
   declarations: [
@@ -72,12 +73,14 @@ import { TaskService } from './services/task.service';
     TaskInfoComponent,
     TaskLinksComponent,
     TaskMessagerComponent,
-    TaskHistoryComponent
+    TaskHistoryComponent,
+    ProgSelectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     UserGuard,

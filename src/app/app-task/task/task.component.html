@@ -12,7 +12,7 @@
             <span class="option" [type]="item.Type">{{item.Type}}</span>
         </div>
     </div>
-    <div class="body">
+    <div class="body" *ngIf="item">
         <div class="content row">
             <div class="main-content col-sm-7">
                 <div class="description" [innerHTML]="item.Description">

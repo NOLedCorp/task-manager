@@ -1,0 +1,14 @@
+<div class="select">
+  <div class="field" (click)="open()">
+    <input [ngClass]="{'border-danger':errors, 'show':show}" 
+    [disabled]="!search"
+    autocomplete="off" type="text" [ngModel]="Value" class="form-control"  (keyup)="find(field)" id="field" #field>
+    <i class="fas fa-sort-down" (click)="open()" id="open"></i>
+  </div>
+  
+  <div class="options" [ngClass]="{'show':show}">
+    <div class="option" *ngFor="let i of showItems" (click)="updateValue(i[out])">
+      {{i[view]}}
+    </div>
+  </div>
+</div>

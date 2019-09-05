@@ -26,6 +26,11 @@ export class ProjectService{
         return this.http.get<Task[]>(this.baseUrl + 'Key=get-project-tasks&ProjectId='+projectId);
     }
 
+    public getProjectUsers(projectId): Observable<User[]> {
+        return this.http.get<User[]>(this.baseUrl + 'Key=get-project-users&ProjectId='+projectId);
+    }
+
+
     public getProjectReqs(projectId): Observable<Requirement[]> {
         return this.http.get<Requirement[]>(this.baseUrl + 'Key=get-project-reqs&ProjectId='+projectId);
     }

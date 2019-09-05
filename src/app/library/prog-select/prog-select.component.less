@@ -1,0 +1,50 @@
+.select{
+    position: relative;
+    .field{
+        position: relative;
+        display: flex;
+        align-items: center;
+        input, input:focus{
+            border: 1px solid #ced4da;
+            box-shadow: none;
+            &.show{
+                border-bottom-left-radius: 0; 
+                border-bottom-right-radius: 0; 
+            }
+            &.form-control:disabled{
+                background-color: #fff;
+            }
+        }
+        i{
+            position: absolute;
+            right: 10px;
+            padding-bottom: 5px;
+        }
+        
+    }
+    .options{
+        z-index: 100;
+        position: absolute;
+        border: 1px solid #ced4da;
+        top: calc( 100% - 1px );
+        width: 100%;
+        background-color: #fff;
+        padding: 10px 0;
+        display: none;
+        max-height: 200px;
+        overflow-y: scroll;
+        .option{
+            padding: 0 10px;
+            cursor: pointer;
+            &:hover{
+                background-color: rgb(0, 123, 255);
+                color: #fff;
+            }
+        }
+        &.show{
+            display: block;
+            border-bottom-left-radius: 4px; 
+            border-bottom-right-radius: 4px; 
+        }
+    }
+}
