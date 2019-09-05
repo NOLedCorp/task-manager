@@ -50,3 +50,13 @@
     color: white;
     background-color: @critical;
 }
+
+input{
+    &.form-control:focus{
+        border: 1px solid #ced4da;
+        box-shadow: none;
+    }
+    &.ng-invalid{
+        border-color: #dc3545;
+    }
+}

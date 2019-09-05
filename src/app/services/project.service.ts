@@ -46,4 +46,9 @@ export class ProjectService{
         return this.http.get<Task>(this.baseUrl + 'Key=get-task&TaskId='+taskId);
     }
 
+    //------------------Изменение----------------
+    public updateTask(task): Observable<boolean> {
+        return this.http.post<boolean>(this.baseUrl + 'Key=update-task', task);
+    }
+
 }

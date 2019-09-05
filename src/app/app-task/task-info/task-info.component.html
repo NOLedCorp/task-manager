@@ -1,27 +1,31 @@
-<form>
+<form [formGroup]="infoForm">
     <div class="form-group">
         <label>Назначено:</label>
-        <prog-select [errors]="false" [items]="users" ></prog-select>
+        <prog-select formControlName="UserId" [errors]="controls.UserId.errors" [items]="users" ></prog-select>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label>Статус:</label>
-            <prog-select [errors]="false" [search]="false" [items]="statuses" [out]="'Name'"></prog-select>
+            <prog-select formControlName="Status" [errors]="controls.Status.errors" [search]="false" [items]="statuses" [out]="'Name'"></prog-select>
         </div>
         <div class="col-md-6">
             <label>Приоритет:</label>
-            <prog-select [errors]="false" [search]="false" [items]="priorities" [out]="'Name'"></prog-select>
+            <prog-select formControlName="Priority" [errors]="controls.Priority.errors" [search]="false" [items]="priorities" [out]="'Name'"></prog-select>
         </div>
     </div>
     <h4>Часы выполнения:</h4>
     <div class="row">
         <div class="col-md-6">
             <label>Оценка:</label>
-            <input class="form-control" type="number">
+            <input formControlName="PlanTime" class="form-control" >
         </div>
         <div class="col-md-6">
             <label>Завершенная работа:</label>
-            <input class="form-control" type="number">
+            <input formControlName="FactTime" class="form-control" >
         </div>
+    </div>
+    <div class="btns mt-4">
+        <button class="btn btn-link pl-0" [disabled]="!changeInfo" (click)="save()">Сохранить</button>
+        <button class="btn btn-link text-danger" [disabled]="!changeInfo" (click)="cancel()">Отменить изменения</button>
     </div>
 </form>

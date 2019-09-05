@@ -80,7 +80,8 @@ import { ProgSelectComponent } from './library/prog-select/prog-select.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserGuard,
