@@ -14,43 +14,32 @@ import { TaskValidators } from 'src/app/services/task.validators';
 export class TaskInfoComponent implements OnInit {
   users: User[] = [];
   status = StatusTypes;
-  infoForm: FormGroup;
-  changeInfo = null;
+  
   constructor(private ts:TaskService, private ps:ProjectService, private fb:FormBuilder) { }
 
   ngOnInit() {
-    this.infoForm = this.fb.group({
+    this.ts.infoForm = this.fb.group({
       UserId: ['', Validators.required],
       Status: ['', Validators.required],
       Priority: ['', Validators.required],
       PlanTime: ['', TaskValidators.ValidateNumberGEZerro],
       FactTime: ['', TaskValidators.ValidateNumberGEZerro]
     });
-    this.infoForm.patchValue(this.ts.task);
-    this.infoForm.valueChanges.subscribe(x => {
-      this.changeInfo = x;
+    this.ts.infoForm.patchValue(this.ts.task);
+    this.ts.infoForm.valueChanges.subscribe(x => {
+      this.ts.changeInfo = x;
     })
+    
     this.ps.getProjectTeam(this.ts.task.ProjectId).subscribe(team => {
       this.users = team;
     })
   }
 
   cancel(){
-    this.infoForm.patchValue(this.ts.task);
+    this.ts.infoForm.patchValue(this.ts.task);
   }
 
-  save(){
-    if(this.infoForm.invalid){
-      return;
-    }
-    this.ps.updateTask(this.changeInfo).subscribe(res => {
-      if(res){
-        this.ts.task = Object.assign(this.ts.task, this.changeInfo);
-      }
-      this,this.changeInfo = null;
-      this.infoForm.reset(this.ts.task);
-    })
-  }
+  
 
   get statuses(){
     let result = [];
@@ -71,5 +60,5 @@ export class TaskInfoComponent implements OnInit {
     return result;
   }
 
-  get controls() {return this.infoForm.controls};
+  get controls() {return this.ts.infoForm.controls};
 }

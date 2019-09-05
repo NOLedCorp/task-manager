@@ -1,4 +1,4 @@
-<form [formGroup]="infoForm">
+<form [formGroup]="ts.infoForm">
     <div class="form-group">
         <label>Назначено:</label>
         <prog-select formControlName="UserId" [errors]="controls.UserId.errors" [items]="users" ></prog-select>
@@ -25,7 +25,6 @@
         </div>
     </div>
     <div class="btns mt-4">
-        <button class="btn btn-link pl-0" [disabled]="!changeInfo" (click)="save()">Сохранить</button>
-        <button class="btn btn-link text-danger" [disabled]="!changeInfo" (click)="cancel()">Отменить изменения</button>
+        <button class="btn btn-link text-danger" [disabled]="!ts.changeInfo" (click)="cancel()">Отменить изменения</button>
     </div>
 </form>

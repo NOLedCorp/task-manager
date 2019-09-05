@@ -12,6 +12,22 @@
             <span class="option" [type]="item.Type">{{item.Type}}</span>
         </div>
     </div>
+    <div class="btns">
+        <div class="left">
+            <i class="fas fa-save" [class.active]="ts.changeInfo"></i>
+            <i class="fas fa-sync-alt active"></i>
+            <i class="fas fa-undo-alt" [class.active]="ts.changeInfo"></i>
+            <div class="remove">
+                <i class="fas fa-times"></i>
+                Удалить
+            </div>
+        </div>
+        
+        <div class="arrows">
+            <i class="fas fa-long-arrow-alt-up active"></i>
+            <i class="fas fa-long-arrow-alt-down active"></i>
+        </div>
+    </div>
     <div class="body" *ngIf="item">
         <div class="content row">
             <div class="main-content col-sm-7">

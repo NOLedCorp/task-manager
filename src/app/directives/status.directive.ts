@@ -1,17 +1,25 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, OnChanges } from '@angular/core';
 import { TaskTypes, StatusTypes, ProjectStatus } from '../models/project.model';
 
 @Directive({
     selector:'[status]'
 })
-export class StatusDirective implements OnInit{
+export class StatusDirective implements OnInit, OnChanges{
     @Input('status') status:string;
     constructor(private element:ElementRef){
         
         
     }
-
+    ngOnChanges(){
+        this.clear();
+        console.log(this.element.nativeElement.className);
+        this.set();
+    }
     ngOnInit(){
+        this.set();
+    }
+
+    private set(){
         switch (this.status){
             case StatusTypes.Proposed: {
                 this.element.nativeElement.classList.add('status-proposed');
@@ -42,5 +50,11 @@ export class StatusDirective implements OnInit{
                 break;
             }
         }
+    }
+
+    private clear(){
+        this.element.nativeElement.classList.remove(
+            'status-active','status-resolved','status-testing','status-closed','status-proposed','status-frozen'
+        )
     }
 }

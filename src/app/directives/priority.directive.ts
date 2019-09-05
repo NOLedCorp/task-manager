@@ -1,17 +1,23 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, OnChanges } from '@angular/core';
 import { PriorityTypes } from '../models/project.model';
 
 @Directive({
     selector:'[priority]'
 })
-export class PriorityDirective implements OnInit{
+export class PriorityDirective implements OnInit, OnChanges{
     @Input('priority') priority:string;
     constructor(private element:ElementRef){
         
         
     }
-
+    ngOnChanges(){
+        this.clear();
+        this.set();
+    }
     ngOnInit(){
+        this.set();
+    }
+    private set(){
         switch (this.priority){
             case PriorityTypes.Critical: {
                 this.element.nativeElement.classList.add('priority-critical');
@@ -30,5 +36,10 @@ export class PriorityDirective implements OnInit{
                 break;
             }
         }
+    }
+    private clear(){
+        this.element.nativeElement.classList.remove(
+            'priority-critical','task-bug','status-active','status-resolved'
+        )
     }
 }

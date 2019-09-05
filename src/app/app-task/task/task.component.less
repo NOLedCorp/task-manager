@@ -3,7 +3,57 @@
 
 .container-fluid{
     
+    .btns{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        border-bottom: 1px solid @gray-border;
+        .left, .arrows{
+            display: flex;
+            &>i{
+                margin-right: 5px;
+                color:@light-blue;
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                
+                &.active{
+                    cursor: pointer;
+                    color: @blue;
+                    &:hover{
+                        background-color: @gray-border;
+                    }
+                }
+            }
+        }
 
+        .remove{
+            cursor: pointer;
+            padding: 0 15px;
+            border-left: 1px solid @gray-border;
+            display: flex;align-items: center;
+            i{
+                font-size: 20px;
+                color: @critical;
+                margin-right: 8px;
+            }
+            &:hover{
+                height: 40px;
+                background-color: @gray-border;
+            }
+        }
+
+        .arrows{
+            i{
+                color: @blue;
+            }
+        }
+        
+    }
     .body{
         display: flex;
         margin-top: 10px;
