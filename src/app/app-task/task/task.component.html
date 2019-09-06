@@ -14,8 +14,8 @@
     </div>
     <div class="btns">
         <div class="left">
-            <i class="fas fa-save" [class.active]="ts.changeInfo"></i>
-            <i class="fas fa-sync-alt active"></i>
+            <i class="fas fa-save" [class.active]="ts.changeInfo" (click)="ts.save()"></i>
+            <i class="fas fa-sync-alt active" (click)="ts.refresh()"></i>
             <i class="fas fa-undo-alt" [class.active]="ts.changeInfo"></i>
             <div class="remove">
                 <i class="fas fa-times"></i>

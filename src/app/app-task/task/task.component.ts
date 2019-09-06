@@ -4,6 +4,7 @@ import { switchMap, tap } from 'rxjs/internal/operators';
 import { Task } from '../../models/project.model';
 import { ProjectService } from '../../services/project.service';
 import { TaskService } from '../../services/task.service';
+import { LoadService } from '../../services/load.service';
 
 @Component({
   selector: 'app-task',
@@ -13,7 +14,9 @@ import { TaskService } from '../../services/task.service';
 export class TaskComponent implements OnInit {
   item:Task = null;
   isEditting = false;
-  constructor(private route:ActivatedRoute, private ps:ProjectService, private ts:TaskService) { }
+  constructor(
+    private ls:LoadService,
+    private route:ActivatedRoute, private ps:ProjectService, private ts:TaskService) { }
 
   ngOnInit() {
     // this.route.paramMap.pipe(
@@ -24,13 +27,20 @@ export class TaskComponent implements OnInit {
         this.init(+x['workId']);
       })
     ).subscribe()
+    this.ts.refreshTask$.subscribe(()=> {
+      this.init(this.item.Id);
+    })
+    
   }
 
   init(id:number){
+    this.ls.showLoad = true;
     this.ps.getTask(id).subscribe(x => {
       
       this.item = x;
       this.ts.task = x;
+      this.ts.taskChanged$.next(this.item);
+      this.ls.showLoad=false;
     })
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { Task, TaskTypes, Project } from '../../models/project.model';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-work',
@@ -17,7 +18,7 @@ export class WorkComponent implements OnInit {
   showTasks: Task[] = [];
   showProjects: Project[] = [];
   isProjects = false;
-  constructor(private route:ActivatedRoute, private ps:ProjectService) { }
+  constructor(private route:ActivatedRoute, private ps:ProjectService, private ts:TaskService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -38,12 +39,20 @@ export class WorkComponent implements OnInit {
     })
   }
 
+  open(tasks, id){
+
+    this.ts.setIdList(tasks.map(x => x.Id), id);
+  }
+
   getTasks(){
     this.ps.getTasks().subscribe(tasks => {
       this.projects = tasks;
       this.projectsTasks = this.getProjectsTasks;
       this.showProjects = JSON.parse(JSON.stringify(this.projects));
-      this.show(tasks[0].Id, null);
+      if(tasks[0]){
+        this.show(tasks[0].Id, null);
+      }
+      
     })
   }
 

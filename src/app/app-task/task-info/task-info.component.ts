@@ -29,6 +29,11 @@ export class TaskInfoComponent implements OnInit {
     this.ts.infoForm.valueChanges.subscribe(x => {
       this.ts.changeInfo = x;
     })
+    this.ts.taskChanged$.subscribe(task => {
+      this.ts.infoForm.patchValue(task, {emitEvent: false});
+      this.ts.changeInfo = null;
+    })
+    
     
     this.ps.getProjectTeam(this.ts.task.ProjectId).subscribe(team => {
       this.users = team;

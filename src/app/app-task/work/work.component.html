@@ -13,7 +13,7 @@
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                 </div>
                 <ng-container *ngIf="shows[p.Id]">
-                    <work-item *ngFor="let task of p.Tasks" [item]="task" [routerLink]="['../project',p.Id,task.Type, task.Id]"></work-item>
+                    <work-item *ngFor="let task of p.Tasks" [item]="task" [routerLink]="['../project',p.Id,task.Type, task.Id]" (click)="open(p.Tasks, task.Id)"></work-item>
                 </ng-container>
                 
             </div>
