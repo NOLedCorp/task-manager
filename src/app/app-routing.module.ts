@@ -31,9 +31,7 @@ const projectRouts: Routes = [
   {path: 'mywork', component: WorkComponent},
   {path: 'requirements', component: ProjectRequirementsComponent},
   {path: 'team', component: TeamComponent},
-  {path: 'requirement/:workId', component: TaskComponent, children: taskRouts},
-  {path: 'task/:workId', component: TaskComponent, children: taskRouts},
-  {path: 'bug/:workId', component: TaskComponent, children: taskRouts},
+  {path: 'work-item/:workId', component: TaskComponent, children: taskRouts}
 ];
 
 const userRouts: Routes = [

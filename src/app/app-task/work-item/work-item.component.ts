@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task, Requirement } from '../../models/project.model';
 
 @Component({
@@ -8,9 +8,14 @@ import { Task, Requirement } from '../../models/project.model';
 })
 export class WorkItemComponent implements OnInit {
   @Input() item: Task | Requirement;
+  @Output('click') onClick = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  click(){
+    this.onClick.emit(true);
   }
 
 }

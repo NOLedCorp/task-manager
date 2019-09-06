@@ -24,8 +24,8 @@
         </div>
         
         <div class="arrows">
-            <i class="fas fa-long-arrow-alt-up active"></i>
-            <i class="fas fa-long-arrow-alt-down active"></i>
+            <button class="btn" [disabled]="!prev" [routerLink]="['../', prev]"><i class="fas fa-long-arrow-alt-up active" ></i></button>
+            <button class="btn" [disabled]="!next" [routerLink]="['../', next]"><i class="fas fa-long-arrow-alt-down active" ></i></button>
         </div>
     </div>
     <div class="body" *ngIf="item">

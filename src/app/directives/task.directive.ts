@@ -11,7 +11,16 @@ export class TaskDirective implements OnInit{
         
     }
 
+    ngOnChanges(){
+        this.clear();
+        this.set();
+    }
+
     ngOnInit(){
+        this.set();
+    }
+
+    private set(){
         switch (this.type){
             case TaskTypes.Bug: {
                 this.element.nativeElement.classList.add('task-bug');
@@ -46,5 +55,10 @@ export class TaskDirective implements OnInit{
                 break;
             }
         }
+    }
+    private clear(){
+        this.element.nativeElement.classList.remove(
+            'task-requirement', 'status-proposed', 'status-closed', 'priority-critical','task-bug','status-active','status-resolved'
+        )
     }
 }

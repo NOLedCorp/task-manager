@@ -14,6 +14,8 @@ import { LoadService } from '../../services/load.service';
 export class TaskComponent implements OnInit {
   item:Task = null;
   isEditting = false;
+  next = null;
+  prev = null;
   constructor(
     private ls:LoadService,
     private route:ActivatedRoute, private ps:ProjectService, private ts:TaskService) { }
@@ -39,7 +41,10 @@ export class TaskComponent implements OnInit {
       
       this.item = x;
       this.ts.task = x;
+      this.ts.taskId = x.Id;
       this.ts.taskChanged$.next(this.item);
+      this.prev = this.ts.prev;
+      this.next = this.ts.next;
       this.ls.showLoad=false;
     })
   }
