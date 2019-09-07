@@ -1,4 +1,24 @@
 @import '../../../colors.less';
+.btns{
+    margin-bottom: 10px;
+    i{
+        margin-right: 10px;
+        font-size: 20;
+        color: @blue;
+        cursor: pointer;
+
+        &:first-child{
+            &:hover{
+                color: green;
+            }
+        }
+        &:last-child{
+            &:hover{
+                color: red;
+            }
+        }
+    }
+}
 .item{
     margin-bottom: 10px;
     &.hide{
@@ -51,6 +71,12 @@
                 padding-left: 5px !important;
                 
             }
+            .type{
+                margin-right: 20px !important;
+            }
+            i:hover{
+                color:@blue !important;
+            }
         }
         &>span{
             &:nth-child(1){
@@ -64,6 +90,14 @@
                 display: flex;
                 width: calc( 100% - 60px);
                 justify-content: space-between;
+                position: relative;
+                align-items: center;
+                .type{
+                    position: relative;
+                    z-index: 1;
+                    margin-right: 0;
+                    transition: .3s;
+                }
                 .name{
                     transition: .3s;
                     padding-left: 0;
@@ -71,6 +105,11 @@
                     text-overflow: ellipsis;
                     overflow: hidden;
                     white-space: nowrap;
+                }
+                i{
+                    position: absolute;
+                    right: 0;
+                    color: black;
                 }
             }
         }
