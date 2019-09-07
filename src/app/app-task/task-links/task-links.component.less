@@ -1,0 +1,78 @@
+@import '../../../colors.less';
+.item{
+    margin-bottom: 10px;
+    &.hide{
+        .link{
+            display: none;
+        }
+    }
+    .header{
+        margin-bottom: 10px;
+        color: @blue;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        white-space: nowrap;
+        &:hover{
+            span{
+                transform: scaleX(1);
+            }
+        }
+        span{
+            transition: 0.3s;
+            transform-origin: left;
+            width: 100%;
+            transform: scaleX(0);
+            display: block;
+            height: 1px;
+            max-height: 1px;
+            border-bottom: 1px solid @blue;
+            margin: 0 10px;
+        }
+
+        i.fa-sort-down{
+            margin-bottom: 5px;
+        }
+        i.fa-sort-up{
+            margin-top: 5px;
+        }
+    }
+
+    .link{
+        display: flex;
+        margin-bottom: 5px;
+        padding: 2px;
+        cursor: pointer;
+        &:hover{
+
+            color: @blue;
+            .name{
+                padding-left: 5px !important;
+                
+            }
+        }
+        &>span{
+            &:nth-child(1){
+                min-width: 55px;
+                max-width: 55px;
+                display: block;
+                margin-right: 10px;
+                border-right: 1px solid @gray-border;
+            }
+            &:nth-child(2){
+                display: flex;
+                width: calc( 100% - 60px);
+                justify-content: space-between;
+                .name{
+                    transition: .3s;
+                    padding-left: 0;
+                    max-width: 70%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}

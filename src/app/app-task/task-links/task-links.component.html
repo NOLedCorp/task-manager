@@ -1,1 +1,38 @@
-<p>task-links works!</p>
+<div class="item" [class.hide]="!shows.parent">
+    <div class="header" (click)="show('parent')">Родитель<span></span><i class="fas fa-sort-{{shows.parent?'down':'up'}}"></i></div>
+    <div class="link">
+        <span>#233</span>
+        <span>
+            <span class="name">Тестовое требование</span>
+            <span type="requirement">requirement</span>
+        </span>
+        
+    </div>
+</div>
+<div class="item" [class.hide]="!shows.other">
+    <div class="header" (click)="show('other')">Другие ссылки<span></span><i class="fas fa-sort-{{shows.other?'down':'up'}}"></i></div>
+    <div class="link">
+        <span>#22</span>
+        <span>
+            <span class="name">Тестовая задача</span>
+            <span type="task">task</span>
+        </span>
+        
+    </div>
+    <div class="link">
+        <span>#232</span>
+        <span>
+            <span class="name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, veritatis.</span>
+            <span type="requirement">requirement</span>
+        </span>
+        
+    </div>
+    <div class="link">
+        <span>#2303</span>
+        <span>
+            <span class="name">Тестовый баг</span>
+            <span type="bug">bug</span>
+        </span>
+        
+    </div>
+</div>

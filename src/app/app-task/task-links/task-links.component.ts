@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-links.component.less']
 })
 export class TaskLinksComponent implements OnInit {
-
+  shows:{other:boolean, parent:boolean} = {other:true, parent:true};
   constructor() { }
 
   ngOnInit() {
   }
 
+  show(id){
+    this.shows[id]=!this.shows[id];
+  }
+  
 }
