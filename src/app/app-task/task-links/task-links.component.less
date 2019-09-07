@@ -21,6 +21,7 @@
 }
 .item{
     margin-bottom: 10px;
+    width: 100%;
     &.hide{
         .link{
             display: none;
@@ -63,6 +64,7 @@
         display: flex;
         margin-bottom: 5px;
         padding: 2px;
+        width: 100%;
         cursor: pointer;
         &:hover{
 
@@ -79,6 +81,7 @@
             }
         }
         &>span{
+
             &:nth-child(1){
                 min-width: 55px;
                 max-width: 55px;
@@ -113,5 +116,11 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width:768px){
+    .name{
+        max-width: 50% !important;
     }
 }
