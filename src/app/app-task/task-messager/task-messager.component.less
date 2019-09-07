@@ -1,0 +1,24 @@
+@import '../../../colors.less';
+.messages{
+    .message{
+        display: flex;
+        .img{
+            min-width: 60px;
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        }
+        .content{
+            p{
+                &:first-child{
+                    margin-top: -8px;
+                    margin-bottom: 10px;
+                    color:@blue;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}

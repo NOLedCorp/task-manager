@@ -84,3 +84,15 @@ CREATE TABLE IF NOT EXISTS files (
     INDEX(OwnerId, Type)
     
 );
+
+CREATE TABLE IF NOT EXISTS messages (
+	Id int(20) PRIMARY KEY AUTO_INCREMENT,
+    TaskId int(20) NOT NULL,
+    UserId int(20) NOT NULL,
+    Text text NOT NULL,
+    CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT messages_task_fk FOREIGN KEY(TaskId) REFERENCES tasks(Id) ON DELETE CASCADE,
+    CONSTRAINT messages_users_fk FOREIGN KEY(UserId) REFERENCES users(Id) ON DELETE CASCADE
+    
+);

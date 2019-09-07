@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/internal/operators'
 import { User } from '../models/user.model';
-import { Project, Requirement, Task, ProjectUser } from '../models/project.model';
+import { Project, Requirement, Task, ProjectUser, Message } from '../models/project.model';
 import { of, Observable } from 'rxjs';
 // import { OnInit } from '@angular/core';
 
@@ -44,6 +44,10 @@ export class ProjectService{
     }
     public getTask(taskId): Observable<Task> {
         return this.http.get<Task>(this.baseUrl + 'Key=get-task&TaskId='+taskId);
+    }
+
+    public getTaskMessages(taskId): Observable<Message[]> {
+        return this.http.get<Message[]>(this.baseUrl + 'Key=get-task-messages&TaskId='+taskId);
     }
 
     //------------------Изменение----------------

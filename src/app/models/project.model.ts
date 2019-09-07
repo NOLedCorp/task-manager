@@ -35,6 +35,15 @@ export interface Task{
     CreateDate: Date;
 }
 
+export interface Message{
+    Id: number;
+    UserName: string;
+    UserPhoto: string;
+    CreateUserId: number;
+    Text: string;
+    CreateDate: Date;
+}
+
 export interface Requirement{
     Id: number;
     Name: string;
