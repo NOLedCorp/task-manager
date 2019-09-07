@@ -12,7 +12,6 @@ export class StatusDirective implements OnInit, OnChanges{
     }
     ngOnChanges(){
         this.clear();
-        console.log(this.element.nativeElement.className);
         this.set();
     }
     ngOnInit(){

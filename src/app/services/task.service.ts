@@ -40,7 +40,6 @@ export class TaskService{
     }
 
     public setIdList(list: number[], id:number){
-      console.log(list, id);
       this.taskIdList = list;
       this.idIndex = this.taskIdList.indexOf(id);
       this.setShow(id);

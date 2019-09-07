@@ -40,7 +40,6 @@ export class WorkComponent implements OnInit {
   }
 
   open(tasks, id){
-    console.log(id);
     this.ts.setIdList(tasks.map(x => x.Id), id);
   }
 

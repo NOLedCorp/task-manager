@@ -1,1 +1,1 @@
-<work-item *ngFor="let req of reqs" [item]="req" [routerLink]="['../requirement', req.Id]"></work-item>
+<work-item *ngFor="let req of reqs" [item]="req" [routerLink]="['../work-item', req.Id]" (click)="open(reqs, req.Id)"></work-item>

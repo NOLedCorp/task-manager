@@ -47,7 +47,6 @@ export class ProgSelectComponent implements ControlValueAccessor, OnInit, OnChan
   constructor() { }
 
   find(elem){
-    console.log(elem);
     if(elem.value!=''){
       this.showItems = JSON.parse(JSON.stringify(this.items.filter(x => {
         return x[this.view].indexOf(elem.value)>-1
