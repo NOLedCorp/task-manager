@@ -46,6 +46,7 @@ import { TaskMessagerComponent } from './app-task/task-messager/task-messager.co
 import { TaskHistoryComponent } from './app-task/task-history/task-history.component';
 import { TaskService } from './services/task.service';
 import { ProgSelectComponent } from './library/prog-select/prog-select.component';
+import { ContenteditableValueAccessor } from './directives/contenteditable.directive';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ProgSelectComponent } from './library/prog-select/prog-select.component
     TaskLinksComponent,
     TaskMessagerComponent,
     TaskHistoryComponent,
-    ProgSelectComponent
+    ProgSelectComponent,
+    ContenteditableValueAccessor
   ],
   imports: [
     BrowserModule,

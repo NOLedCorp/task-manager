@@ -1,11 +1,19 @@
-<div class="messages">
+<h3 *ngIf="!messages.length">Сообщений не найдено</h3>
+<div class="messages" *ngIf="messages.length">
+    
     <div class="message" *ngFor="let m of messages">
         <div class="img">
             <img src="{{m.UserPhoto}}" alt="">
         </div>
         <div class="content">
             <p>{{m.UserName}}</p>
-            <p>{{m.Text}}</p>
+            <p [innerHTML]="m.Text"></p>
         </div>
     </div>
+</div>
+<div class="message-panel">
+    <label>Оставить комментарий</label>
+    <div class="textarea" contenteditable="true" [(ngModel)]="text"></div>
+    <button class="btn btn-primary" [disabled]="!text.length || text.length>500" (click)="addMessage()">Отправить</button>
+    
 </div>

@@ -17,7 +17,6 @@ export class TaskDirective implements OnInit{
     }
 
     ngOnInit(){
-        console.log(this.type)
         this.set();
     }
 

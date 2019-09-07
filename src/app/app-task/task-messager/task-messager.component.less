@@ -1,24 +1,43 @@
 @import '../../../colors.less';
+h3{
+    text-align: center;
+    color: lightgrey;
+    margin: 20px 0;
+}
 .messages{
+    max-height: 500px;
+    overflow-y: auto;
+    
     .message{
         display: flex;
         .img{
-            min-width: 60px;
+            min-width: 50px;
             img{
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
                 border-radius: 50%;
             }
         }
         .content{
             p{
                 &:first-child{
-                    margin-top: -8px;
-                    margin-bottom: 10px;
+                    margin-top: -5px;
+                    margin-bottom: 2px;
                     color:@blue;
-                    font-size: 20px;
+                    font-size: 18px;
                 }
             }
         }
+    }
+}
+.message-panel{
+    margin: 20px 0;
+    .textarea{
+        max-height: 300px;
+        width: 100%;
+        border: 1px solid @gray-border;
+        border-radius: 3px;
+        padding: 3px;
+        margin-bottom: 10px;
     }
 }
