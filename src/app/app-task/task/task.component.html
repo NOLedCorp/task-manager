@@ -30,7 +30,7 @@
     </div>
     <div class="body" *ngIf="item">
         <div class="content row">
-            <div class="main-content col-sm-7">
+            <div class="main-content col-md-7">
                 <div class="description" [innerHTML]="item.Description">
                     
                 </div>
@@ -41,7 +41,7 @@
                     </a>
                 </div>
             </div>
-            <div class="additional-content col-sm-5"><router-outlet></router-outlet></div>
+            <div class="additional-content col-md-5 pt-5 pt-md-0"><router-outlet></router-outlet></div>
         </div>
         <div class="menu">
             <div class="item" ><i [routerLink]="['info']" routerLinkActive="active" class="fas fa-info-circle"></i></div>
