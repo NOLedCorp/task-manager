@@ -56,6 +56,10 @@ export class ProjectService{
         return this.http.post<Message>(this.baseUrl + 'Key=add-message', message);
     }
 
+    public addProject(project): Observable<number> {
+        return this.http.post<number>(this.baseUrl + 'Key=add-project', project);
+    }
+
     //------------------Изменение----------------
     public updateTask(task): Observable<boolean> {
         return this.http.post<boolean>(this.baseUrl + 'Key=update-task', task);

@@ -256,21 +256,62 @@ class DataBase {
         return $s->fetchAll();
     }
     
+    public function getTask($user_id, $task_id){
+        $s = $this->db->prepare("SELECT t.Id, t.Name, t.Description, t.ProjectId, t.CreateDate, t.Status, t.Priority, u.Name as UserName, pu.Roles, t.Type, t.UserId 
+        FROM tasks t JOIN users u ON t.UserId=u.Id JOIN projectusers pu ON t.UserId=pu.UserId AND t.ProjectId=pu.ProjectId  WHERE t.Id=?");
+        $s->execute(array($task_id));
+        $s->setFetchMode(PDO::FETCH_CLASS, 'Task');
+        
+        $task = $s->fetch();
+        $task->Files = $this->getTaskFiles($task->Id);
+        return $task;
+    }
+    
+    private function getTaskFiles($task_id){
+        $s = $this->db->prepare("SELECT * FROM files WHERE OwnerId=? AND Type='task'");
+        $s->execute(array($task_id));
+        $s->setFetchMode(PDO::FETCH_CLASS, 'File');
+        
+        return $s->fetchAll();
+    }
+    
+    public function getTaskMessages($task_id){
+        $s = $this->db->prepare("SELECT m.Id, m.UserId as CreateUserId, u.Name as UserName, u.Photo as UserPhoto, m.Text, m.CreateDate  FROM messages m JOIN users u ON u.Id=m.UserId WHERE TaskId=?");
+        $s->execute(array($task_id));
+        $s->setFetchMode(PDO::FETCH_CLASS, 'Message');
+        
+        return $s->fetchAll();
+    }
+    
+    private function getMessage($message_id){
+        $s = $this->db->prepare("SELECT m.Id, m.UserId as CreateUserId, u.Name as UserName, u.Photo as UserPhoto, m.Text, m.CreateDate  FROM messages m JOIN users u ON u.Id=m.UserId WHERE m.Id=?");
+        $s->execute(array($message_id));
+        $s->setFetchMode(PDO::FETCH_CLASS, 'Message');
+        
+        return $s->fetch();
+    }
+    
 
     // ------------------------       Запросы на добавление данных в базу      ------------------------
     
 
-    public function addItem($l, $p, $table, $item){
-        if(!$this->checkAdmin($l, $p)){
-            return;
-        }
+    private function addItem($item, $table){
         $res = $this->genInsertQuery($item,$table);
         $s = $this->db->prepare($res[0]);
         if($res[1][0]!=null){
             $s->execute($res[1]);
         }
-        
         return $this->db->lastInsertId();
+    }
+    
+    public function addMessage($item){
+        
+        return $this->getMessage($this->addItem($item, 'messages'));
+    }
+    
+    public function addProject($item){
+        
+        return $this->addItem($item, 'projects');
     }
     
     public function removeItem($l, $p, $table, $id){
@@ -303,18 +344,23 @@ class DataBase {
     
     // ------------------------       Запросы на изменение данных в базе       ------------------------
     
-    public function updateItem($l, $p, $new, $table){
-        if($this->checkAdmin($l, $p)){
-            $id = $new['Id'];
-            unset($new['Id']);
-            $a = $this->genUpdateQuery(array_keys($new), array_values($new), $table, $id, 'Id');
-            $s = $this->db->prepare($a[0]);
-            $s->execute($a[1]);
-            return $a;
-        }else{
-            return false;
-        }
+    private function updateItem($new, $table){
+        $id = $new['Id'];
+        unset($new['Id']);
+        $a = $this->genUpdateQuery(array_keys($new), array_values($new), $table, $id, 'Id');
+        $s = $this->db->prepare($a[0]);
+        $s->execute($a[1]);
+        return $a;
     }
+    
+    public function updateTask($user_id, $new){
+        $links = $new['Links'];
+        unset($new['Links']);
+        $this->updateItem($new, 'tasks');
+        return true;
+    }
+    
+    
     
    
     

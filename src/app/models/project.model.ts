@@ -5,6 +5,7 @@ export interface Project{
     ClientContact:string;
     File:string;
     CreateUserId: number;
+    ClientLink: string;
     CreateDate: Date;
     Status:ProjectStatus;
     Type: ProjectType;

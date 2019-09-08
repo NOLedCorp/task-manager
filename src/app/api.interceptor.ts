@@ -8,7 +8,7 @@ export class ApiInterceptor implements HttpInterceptor{
         if (req.url.includes('client.nomokoiw.beget.tech') && !req.url.includes('auth.controller.php') && sessionStorage.getItem('userToken')) {
             let u=sessionStorage.getItem('userToken');
             const paramReq = req.clone({
-                params: req.params.set('Token', encodeURIComponent(u))
+                params: req.params.set('Token', u)
             });
             return next.handle(paramReq);
         } else {

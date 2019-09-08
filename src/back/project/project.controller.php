@@ -37,6 +37,22 @@ if(isset($_GET['Token']))
             case 'get-tasks':
                 echo json_encode($ctxt->getTasks($jwt->decodeJWT($_GET['Token'])->Id));
                 break;
+                
+            case 'get-task':
+                echo json_encode($ctxt->getTask($jwt->decodeJWT($_GET['Token'])->Id, $_GET['TaskId']));
+                break;
+                
+            case 'get-task-messages':
+                echo json_encode($ctxt->getTaskMessages($_GET['TaskId']));
+                break;
+                
+            case 'get-task-links':
+                echo json_encode($ctxt->getTaskLinks($_GET['TaskId']));
+                break;
+                
+            case 'get-task-req':
+                echo json_encode($ctxt->getTaskReq($_GET['TaskId']));
+                break;
             
     
             // --------------- Добавление данных ---------------
@@ -48,13 +64,26 @@ if(isset($_GET['Token']))
                 //echo json_encode($ctxt->addItem($_GET['Login'], $_GET['Password'], $_GET['Table'], $b));
                 break;
                 
+            case 'add-message':
+                
+                $b = json_decode(file_get_contents('php://input'), true);
+                echo json_encode($ctxt->addMessage($b));
+                break;
+                
+            case 'add-project':
+                
+                $b = json_decode(file_get_contents('php://input'), true);
+                echo json_encode($ctxt->addProject($b));
+                break;
+                
             
                 
                 // --------------- Обновление данных ---------------
                 
-            case 'update-item':
+            
+            case 'update-task':
                 $b = json_decode(file_get_contents('php://input'), true);
-                //echo json_encode($ctxt->updateItem($_GET['Login'], $_GET['Password'], $b, $_GET['Table']));
+                echo json_encode($ctxt->updateTask($jwt->decodeJWT($_GET['Token'])->Id, $b));
                 break;
             
                 

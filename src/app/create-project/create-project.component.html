@@ -1,30 +1,31 @@
-<form>
+<form [formGroup]="projectForm">
     <div class="form-group">
         <label>Название проекта</label>
-        <input class="form-control">
+        <input formControlName="Name" class="form-control">
     </div>
     <div class="row">
         <div class="col-sm-6 form-group">
             <label>Ссылка на репозиторий</label>
-            <input class="form-control" type="text">
+            <input formControlName="GitHubLink" class="form-control" type="text">
         </div>
         <div class="col-sm-6 form-group">
             <label>Контакт клиента</label>
-            <input class="form-control" type="text">
+            <input formControlName="ClientContact" class="form-control" type="text">
         </div>
     </div>
     <div class="row">
         <div class="col-sm-3 form-group">
             <label>Тип</label>
-            <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            <prog-select formControlName="Type" [errors]="controls.Type.errors" [search]="false" [items]="types" [out]="'Name'"></prog-select>
         </div>
         <div class="col-sm-3 form-group">
             <label>Статус</label>
-            <prog-select [search]="false" [items]="statuses" [out]="'Name'"></prog-select>
+            <prog-select formControlName="Status" [errors]="controls.Status.errors" [search]="false" [items]="statuses" [out]="'Name'"></prog-select>
         </div>
         <div class="col-sm-6 form-group">
             <label>Ссылка на сайт</label>
-            <input type="text" class="form-control">
+            <input formControlName="ClientLink" type="text" class="form-control">
         </div>
     </div>
+    <button class="btn btn-primary" (click)="create()">Создать</button>
 </form>
