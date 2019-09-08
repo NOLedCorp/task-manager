@@ -14,7 +14,6 @@
         transform: scale(0,0);
         min-width: 50vw;
         min-height: 30vh;
-        overflow: hidden;
         box-shadow: 0 0 10px black;
 
 
@@ -61,11 +60,21 @@
 
 @keyframes open{
     0%{
+        overflow: hidden;
         transform: scale(0,0);
     }
     100%{
-        
+        overflow: visible;
         transform: scale(1,1)
+    }
+}
+
+@media (max-width:768px){
+    .modal-contentt{
+        width: 100vw !important;
+        height: 100vh;
+        max-height: 100vh !important;
+        overflow: scroll !important; 
     }
 }
 

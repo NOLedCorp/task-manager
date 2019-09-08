@@ -1,5 +1,5 @@
 <div class="btns">
-    <i class="fas fa-external-link-alt"></i>
+    <i class="fas fa-external-link-alt" (click)="createLink()"></i>
     <i class="fas fa-unlink"></i>
 </div>
 <div class="item" [class.hide]="!shows.parent">
@@ -30,7 +30,7 @@
         <span>
             <span class="name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, veritatis.</span>
             <span class="type" type="requirement">requirement</span>
-            <i class="fas fa-pencil-alt"></i> 
+            <i class="fas fa-pencil-alt" (click)="updateLink()"></i> 
         </span>
         
     </div>

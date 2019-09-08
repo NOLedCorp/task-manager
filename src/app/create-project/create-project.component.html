@@ -1,1 +1,30 @@
-<p>create-project works!</p>
+<form>
+    <div class="form-group">
+        <label>Название проекта</label>
+        <input class="form-control">
+    </div>
+    <div class="row">
+        <div class="col-sm-6 form-group">
+            <label>Ссылка на репозиторий</label>
+            <input class="form-control" type="text">
+        </div>
+        <div class="col-sm-6 form-group">
+            <label>Контакт клиента</label>
+            <input class="form-control" type="text">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 form-group">
+            <label>Тип</label>
+            <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+        </div>
+        <div class="col-sm-3 form-group">
+            <label>Статус</label>
+            <prog-select [search]="false" [items]="statuses" [out]="'Name'"></prog-select>
+        </div>
+        <div class="col-sm-6 form-group">
+            <label>Ссылка на сайт</label>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+</form>

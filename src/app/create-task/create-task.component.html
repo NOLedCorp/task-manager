@@ -1,2 +1,44 @@
-<p>create-task works!</p>
-<p>{{type}}</p>
+<form>
+    <div class="form-group">
+        <label>Название задачи</label>
+        <input class="form-control">
+    </div>
+    <div class="row">
+        <div class="col-sm-6 row">
+            <div class="col-sm-6 form-group">
+                <label>Проект</label>
+                <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label>Исполнитель</label>
+                <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            </div>
+            <div class="col-sm-12 form-group">
+                <label>Требование</label>
+                <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            </div>
+            <div class="col-sm-4 form-group">
+                <label>Тип</label>
+                <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            </div>
+            <div class="col-sm-4 form-group">
+                <label>Статус</label>
+                <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            </div>
+            <div class="col-sm-4 form-group">
+                <label>Приоритет</label>
+                <prog-select [search]="false" [items]="types" [out]="'Name'"></prog-select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="col-sm-6 form-group">
+                <label>Оценка времени</label>
+                <input type="number" class="form-control">
+            </div>
+            <div class="col-sm-12 form-group">
+                <label>Описание</label>
+                <textarea class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
