@@ -27,7 +27,7 @@
                 <i class="fas fa-plus" (click)="toggleShow()" title="Добавление элементов"></i>
                 <div class="addings" [class.show]="show">
                     <p class="adding"><i class="fas fa-briefcase"></i> Создать проект</p>
-                    <p class="adding"><i class="fas fa-tasks"></i> Создать задачу</p>
+                    <p class="adding" (click)="createTask()"><i class="fas fa-tasks"></i> Создать задачу</p>
                     <p class="adding"><i class="far fa-file-alt"></i> Создать требование</p>
                     <p class="adding"><i class="far fa-clipboard"></i> Создать заметку</p>
                 </div>

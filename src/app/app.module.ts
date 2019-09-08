@@ -47,6 +47,9 @@ import { TaskHistoryComponent } from './app-task/task-history/task-history.compo
 import { TaskService } from './services/task.service';
 import { ProgSelectComponent } from './library/prog-select/prog-select.component';
 import { ContenteditableValueAccessor } from './directives/contenteditable.directive';
+import { ModalComponent } from './modal/modal.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { ModalService } from './services/modal.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,9 @@ import { ContenteditableValueAccessor } from './directives/contenteditable.direc
     TaskMessagerComponent,
     TaskHistoryComponent,
     ProgSelectComponent,
-    ContenteditableValueAccessor
+    ContenteditableValueAccessor,
+    ModalComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +95,7 @@ import { ContenteditableValueAccessor } from './directives/contenteditable.direc
     ProjectGuard,
     UserService,
     TaskService,
+    ModalService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
@@ -99,6 +105,9 @@ import { ContenteditableValueAccessor } from './directives/contenteditable.direc
     GitHubService,
     LoadService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CreateTaskComponent
+  ]
 })
 export class AppModule { }

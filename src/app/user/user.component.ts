@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalService } from '../services/modal.service';
+import { CreateTaskComponent } from '../create-task/create-task.component';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   user = null;
   show: boolean = false;
-  constructor(private router:Router) { }
+  constructor(private router:Router, private ms:ModalService) { }
 
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -23,6 +25,10 @@ export class UserComponent implements OnInit {
     sessionStorage.removeItem('userToken');
     sessionStorage.removeItem('userInfo');
     this.router.navigate(['/auth']);
+  }
+
+  createTask(){
+    this.ms.open(CreateTaskComponent);
   }
 
 }
