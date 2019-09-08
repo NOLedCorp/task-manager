@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from '../services/modal.service';
 import { CreateTaskComponent } from '../create-task/create-task.component';
+import { CreateProjectComponent } from '../create-project/create-project.component';
+import { TaskTypes } from '../models/project.model';
 
 @Component({
   selector: 'app-user',
@@ -27,8 +29,17 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/auth']);
   }
 
-  createTask(){
-    this.ms.open(CreateTaskComponent);
+  createProject(){
+    this.ms.open(CreateProjectComponent, 'Создание проекта');
+  }
+
+  createTask(req = false){
+    if(req){
+      this.ms.open(CreateTaskComponent, 'Создание требования', {type: TaskTypes.Requirement});
+    }else{
+      this.ms.open(CreateTaskComponent, 'Создание задачи');
+    }
+    
   }
 
 }

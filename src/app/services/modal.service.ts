@@ -2,7 +2,6 @@ import { ElementRef, ViewContainerRef, ComponentFactoryResolver, Type } from '@a
 import { CreateTaskComponent } from '../create-task/create-task.component';
 
 export class ModalService{
-    public input:any;
     public header:string;
     public modal:ViewContainerRef;
     private _show:boolean = false;
@@ -13,19 +12,20 @@ export class ModalService{
 
     open(component: Type<any>, header = 'Заголовок модального окна', input?){
         this.modal.clear();
-        let bookItemComponent = this.componentFactoryResolver.resolveComponentFactory(component);
-        let bookItemComponentRef = this.modal.createComponent(bookItemComponent);
+        let newComponent = this.componentFactoryResolver.resolveComponentFactory(component);
+        let newComponentRef = this.modal.createComponent(newComponent);
         this._show=true;
         this.header = header;
-
-        // (<any>bookItemComponentRef.instance).value = {
-        //     title: 'Great Expectations',
-        //     author: 'Charles Dickens'
-        // };
+        document.querySelector('body').style.overflow='hidden';
+        if(input){
+            (<any>newComponentRef.instance) = Object.assign(newComponentRef.instance, input);
+        }
+        
     }
 
     close(){
         this._show=false;
+        document.querySelector('body').style.overflow='unset';
         this.modal.clear();
     }
 }

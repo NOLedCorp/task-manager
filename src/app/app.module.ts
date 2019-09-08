@@ -50,6 +50,9 @@ import { ContenteditableValueAccessor } from './directives/contenteditable.direc
 import { ModalComponent } from './modal/modal.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ModalService } from './services/modal.service';
+import { CreateProjectComponent } from './create-project/create-project.component';
+import { CreateLinkComponent } from './create-link/create-link.component';
+import { CreateTeamMateComponent } from './create-team-mate/create-team-mate.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,10 @@ import { ModalService } from './services/modal.service';
     ProgSelectComponent,
     ContenteditableValueAccessor,
     ModalComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    CreateProjectComponent,
+    CreateLinkComponent,
+    CreateTeamMateComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +113,10 @@ import { ModalService } from './services/modal.service';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    CreateTaskComponent
+    CreateTaskComponent,
+    CreateLinkComponent,
+    CreateProjectComponent,
+    CreateTeamMateComponent
   ]
 })
 export class AppModule { }
